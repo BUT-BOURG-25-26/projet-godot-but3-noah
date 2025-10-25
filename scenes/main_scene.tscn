@@ -1,18 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://ijt3x48qbcmc"]
+[gd_scene load_steps=7 format=3 uid="uid://ijt3x48qbcmc"]
 
+[ext_resource type="Script" uid="uid://r2my3a5n4e4v" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://d14pfdvg3or51" path="res://scenes/world_gen/world.tscn" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://dj7so6rtr0m71" path="res://scenes/entity/player.tscn" id="3_7ykc4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2twt"]
+
+[sub_resource type="Sky" id="Sky_w2twt"]
+sky_material = SubResource("ProceduralSkyMaterial_w2twt")
 
 [sub_resource type="Environment" id="Environment_w2twt"]
+background_mode = 2
+sky = SubResource("Sky_w2twt")
+tonemap_mode = 2
 
 [node name="MainScene" type="Node3D"]
+script = ExtResource("1_pw63i")
+world_tile_scene = ExtResource("1_w2twt")
+player_scene = ExtResource("3_7ykc4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w2twt")
 
-[node name="world" parent="." instance=ExtResource("1_w2twt")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.959791, 0.125137, -0.251282, 0, 0.895145, 0.445776, 0.280717, 0.427851, -0.859151, 0, 4.01516, -0.884783)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 29.0418, 0)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
