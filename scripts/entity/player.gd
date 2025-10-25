@@ -15,7 +15,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	player_movement()
-	
 
 func player_movement() -> void:
 	var move_inputs = read_move_inputs()

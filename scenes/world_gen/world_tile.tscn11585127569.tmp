@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://d14pfdvg3or51"]
+
+[ext_resource type="Material" uid="uid://d3so0qbeo53rw" path="res://materials/M_ground.tres" id="1_f14s7"]
+[ext_resource type="Script" uid="uid://dncmk5gnrjhp8" path="res://scripts/world_gen/world_tile.gd" id="1_idhbe"]
+[ext_resource type="Material" uid="uid://cb5kl10esd6sr" path="res://materials/M_plateforme.tres" id="2_idhbe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_idhbe"]
+size = Vector3(20, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kabko"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7c5vx"]
+material = ExtResource("1_f14s7")
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c5vx"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iy71k"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iy71k"]
+size = Vector3(2, 1.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kwfj1"]
+size = Vector3(2, 1.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkxuw"]
+size = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5dy8i"]
+size = Vector3(3, 2, 2)
+
+[node name="world_tile" type="Node3D"]
+script = ExtResource("1_idhbe")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_idhbe")
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("BoxShape3D_kabko")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+mesh = SubResource("BoxMesh_7c5vx")
+skeleton = NodePath("../..")
+
+[node name="plateforme1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 5)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme1"]
+shape = SubResource("BoxShape3D_7c5vx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plateforme1"]
+material_override = ExtResource("2_idhbe")
+mesh = SubResource("BoxMesh_iy71k")
+
+[node name="plateforme2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.75, 6.5)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme2"]
+shape = SubResource("BoxShape3D_iy71k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plateforme2"]
+material_override = ExtResource("2_idhbe")
+mesh = SubResource("BoxMesh_kwfj1")
+
+[node name="plateforme3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 6.5)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme3"]
+shape = SubResource("BoxShape3D_bkxuw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plateforme3"]
+material_override = ExtResource("2_idhbe")
+mesh = SubResource("BoxMesh_5dy8i")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
