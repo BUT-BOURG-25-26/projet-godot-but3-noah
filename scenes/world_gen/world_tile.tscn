@@ -41,7 +41,6 @@ skeleton = NodePath("../..")
 
 [node name="plateforme1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 5)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme1"]
 shape = SubResource("BoxShape3D_7c5vx")
@@ -52,7 +51,6 @@ mesh = SubResource("BoxMesh_iy71k")
 
 [node name="plateforme2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.85, 6.5)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme2"]
 shape = SubResource("BoxShape3D_iy71k")
@@ -63,7 +61,6 @@ mesh = SubResource("BoxMesh_kwfj1")
 
 [node name="plateforme3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.1, 6.5)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme3"]
 shape = SubResource("BoxShape3D_bkxuw")

@@ -35,42 +35,42 @@ func _process(_delta: float) -> void:
 	if touch.position != init_pos.position:
 		var angle = init_pos.get_angle_to(mouse_pos)
 		if angle >= -0.5 and angle <= 0.5:
-			print("right")
+			#print("right")
 			reset_dir()
 			Input.action_press(right_input)
 		elif angle >= 0.5 and angle <= 1.0:
-			print("down-right")
+			#print("down-right")
 			reset_dir()
 			Input.action_press(down_input)
 			Input.action_press(right_input)
 		elif angle >= 1.0 and angle <= 2.1:
-			print("down")
+			#print("down")
 			reset_dir()
 			Input.action_press(down_input)
 		elif angle >= 2.1 and angle <= 2.7:
-			print("down-left")
+			#print("down-left")
 			reset_dir()
 			Input.action_press(down_input)
 			Input.action_press(left_input)
 		elif angle >= 2.7 and angle <= 3.2:
-			print("left")
+			#print("left")
 			reset_dir()
 			Input.action_press(left_input)
 		elif angle >= -3.2 and angle <= -2.7:
-			print("left")
+			#print("left")
 			reset_dir()
 			Input.action_press(left_input)
 		elif angle >= -2.7 and angle <= -2.1:
-			print("up-left")
+			#print("up-left")
 			reset_dir()
 			Input.action_press(up_input)
 			Input.action_press(left_input)
 		elif angle >= -2.1 and angle <= -1.0:
-			print("up")
+			#print("up")
 			reset_dir()
 			Input.action_press(up_input)
 		elif angle >= -1.0 and angle <= -0.5:
-			print("top-right")
+			#print("top-right")
 			reset_dir()
 			Input.action_press(up_input)
 			Input.action_press(right_input)

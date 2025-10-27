@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ijt3x48qbcmc"]
+[gd_scene load_steps=8 format=3 uid="uid://ijt3x48qbcmc"]
 
 [ext_resource type="Script" uid="uid://r2my3a5n4e4v" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://d14pfdvg3or51" path="res://scenes/world_gen/world_tile.tscn" id="2_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://dj7so6rtr0m71" path="res://scenes/entity/player.tscn" id="3_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://bkq3ont8slvcc" path="res://scenes/entity/zombie_spawner.tscn" id="4_pu3yx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2twt"]
 
@@ -18,6 +19,7 @@ tonemap_mode = 2
 script = ExtResource("1_pw63i")
 world_tile_scene = ExtResource("2_7ykc4")
 player_scene = ExtResource("3_pu3yx")
+zombie_spawner_scene = ExtResource("4_pu3yx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w2twt")

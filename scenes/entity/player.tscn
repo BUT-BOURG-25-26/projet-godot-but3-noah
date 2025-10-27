@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj7so6rtr0m71"]
+[gd_scene load_steps=7 format=3 uid="uid://dj7so6rtr0m71"]
 
 [ext_resource type="Script" uid="uid://c866pxi7a1mlb" path="res://scripts/entity/player.gd" id="1_1obkj"]
 [ext_resource type="Script" uid="uid://2vlneqewgcm5" path="res://scripts/entity/camera_3d.gd" id="2_gdab3"]
@@ -6,11 +6,15 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqvra"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgyl1"]
+albedo_color = Color(0.384314, 0, 0.831373, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1obkj"]
+material = SubResource("StandardMaterial3D_tgyl1")
 
-[node name="Node3D" type="Node3D" groups=["player"]]
+[node name="Node3D" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 script = ExtResource("1_1obkj")
 joystick_scene = ExtResource("3_tgyl1")
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkq3ont8slvcc"]
+
+[ext_resource type="Script" uid="uid://cdklladpumg15" path="res://scripts/entity/zombie_spawner.gd" id="1_0bklk"]
+[ext_resource type="PackedScene" uid="uid://bl6ieex6xd00o" path="res://scenes/entity/zombie.tscn" id="2_5v2jh"]
+
+[node name="ZombieSpawner" type="Node3D"]
+script = ExtResource("1_0bklk")
+zombie_scene = ExtResource("2_5v2jh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
