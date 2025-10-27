@@ -3,7 +3,7 @@ extends Node3D
 @export var world_tile_scene: PackedScene
 @export var player_scene: PackedScene
 @export var tile_size: float = 20.0
-@export var view_distance: int = 1
+@export var view_distance: int = 2
 @export var unload_distance: int = 2
 
 var player: Player
@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 
 func update_tiles():
 	var player_tile = get_player_tile_coords()
-	print(player_tile)
 	var new_tiles: Dictionary = {}
 
 	for x in range(player_tile.x - view_distance, player_tile.x + view_distance + 1):

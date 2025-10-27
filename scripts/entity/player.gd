@@ -2,6 +2,11 @@ extends CharacterBody3D
 
 class_name Player
 
+@export var joystick_scene: PackedScene
+
+var joystick_displayed : bool
+var joystick : Node2D
+
 @export var health : int
 @export var attack_damage : int
 @export var attack_speed : float
@@ -14,6 +19,17 @@ func _ready() -> void:
 	movement_speed = 5
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("left_mouse_click"):
+		if !joystick_displayed:
+			joystick_displayed=true
+			joystick = joystick_scene.instantiate()
+			joystick.global_position = get_viewport().get_mouse_position()
+			add_child(joystick)
+	else:
+		if joystick_displayed:
+			joystick_displayed = false
+			joystick.queue_free()
+			
 	player_movement()
 
 func player_movement() -> void:

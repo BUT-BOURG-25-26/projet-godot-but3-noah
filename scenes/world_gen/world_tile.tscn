@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://d14pfdvg3or51"]
+[gd_scene load_steps=11 format=3 uid="uid://d14pfdvg3or51"]
 
 [ext_resource type="Material" uid="uid://d3so0qbeo53rw" path="res://materials/M_ground.tres" id="1_f14s7"]
-[ext_resource type="Script" uid="uid://dncmk5gnrjhp8" path="res://scripts/world_gen/world_tile.gd" id="1_idhbe"]
 [ext_resource type="Material" uid="uid://cb5kl10esd6sr" path="res://materials/M_plateforme.tres" id="2_idhbe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kabko"]
@@ -30,7 +29,6 @@ size = Vector3(3, 2, 2)
 size = Vector3(3, 2, 2)
 
 [node name="world_tile" type="Node3D"]
-script = ExtResource("1_idhbe")
 
 [node name="ground" type="StaticBody3D" parent="."]
 
