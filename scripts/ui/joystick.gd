@@ -10,15 +10,15 @@ extends Node2D
 @export var left_input:String = "ui_left"
 ##Action for right direction.
 @export var right_input:String = "ui_right"
-var radius = 40
+var radius = 20
 
 func _draw() -> void:
 	var center = Vector2(0, 0)
-	var draw_radius = 100
+	var draw_radius = 50
 	var start_angle = 0.0 
 	var end_angle = 360 
 	var color = Color.POWDER_BLUE # Red color
-	var width = 20
+	var width = 10
 	draw_arc(center, draw_radius, start_angle, end_angle,120, color, width,true)
 	draw_circle(touch.position,60,Color.SKY_BLUE)
 	draw_arc(touch.position, 60, start_angle, end_angle,120, Color.STEEL_BLUE, width,true)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl6ieex6xd00o"]
+
+[ext_resource type="Script" uid="uid://bw6p5msbp5fcy" path="res://scripts/entity/zombie/zombie.gd" id="1_lf6ul"]
+[ext_resource type="Material" uid="uid://donlman15o83q" path="res://materials/M_zombie.tres" id="2_6iqqd"]
+[ext_resource type="PackedScene" uid="uid://c3fbxgdgodpha" path="res://scenes/entity/zombie/zombie_xp.tscn" id="2_yayp3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f8fn2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j8ibk"]
+material = ExtResource("2_6iqqd")
+
+[node name="Zombie" type="CharacterBody3D"]
+script = ExtResource("1_lf6ul")
+zombie_xp_scene = ExtResource("2_yayp3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f8fn2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_j8ibk")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="tree_exiting" from="MeshInstance3D" to="." method="_on_mesh_instance_3d_tree_exiting"]

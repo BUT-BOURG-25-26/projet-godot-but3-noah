@@ -4,6 +4,7 @@ class_name Zombie
 
 var player : Player
 
+@export var zombie_xp_scene: PackedScene
 @export var health : int
 @export var attack : int
 @export var movement_speed : float
@@ -31,3 +32,9 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider() is Player:
 			queue_free()
 	move_and_slide()
+
+func _on_tree_exiting() -> void:
+	var zombie_xp : Node3D = zombie_xp_scene.instantiate()
+	get_parent().get_parent().add_child(zombie_xp)
+	zombie_xp.global_position = Vector3(global_position.x, 0.5, global_position.z)
+	zombie_xp.rotate(Vector3(1, 0, 0), 90)

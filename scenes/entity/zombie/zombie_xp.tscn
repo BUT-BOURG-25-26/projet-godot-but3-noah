@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3fbxgdgodpha"]
+
+[ext_resource type="Script" uid="uid://xioiioop7mch" path="res://scripts/entity/zombie/zombie_xp.gd" id="1_at6bw"]
+[ext_resource type="Material" uid="uid://donlman15o83q" path="res://materials/M_zombie.tres" id="1_mccdy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mccdy"]
+material = ExtResource("1_mccdy")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tjri"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at6bw"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="ZombieXp" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_at6bw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mccdy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8tjri")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_at6bw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

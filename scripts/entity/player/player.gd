@@ -11,12 +11,18 @@ var joystick : Node2D
 @export var attack_damage : int
 @export var attack_speed : float
 @export var movement_speed : float
+@export var xp : int
+@export var level_xp_amount : int
+@export var level : int
 
 func _ready() -> void:
 	health = 10
 	attack_damage = 5
 	attack_speed = 1
 	movement_speed = 5
+	xp = 0
+	level_xp_amount = 200
+	level = 1
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("left_mouse_click"):
@@ -48,3 +54,14 @@ func read_move_inputs() -> Vector3:
 	move_inputs.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	move_inputs = move_inputs.normalized()
 	return move_inputs
+
+func gain_xp(xp_amount) -> void:
+	xp+=xp_amount
+	level_up()
+
+func level_up() -> void:
+	if xp >= level_xp_amount:
+		print("Level up !!")
+		level+=1
+		level_xp_amount = level_xp_amount*2 - xp
+		xp = 0

@@ -4,8 +4,7 @@ extends Camera3D
 var player : Player
 
 func _ready() -> void:
-	var parent : Node3D = get_parent()
-	player = parent.get_node("Player")
+	player = get_parent().get_node("Player")
 
 func _process(delta: float) -> void:
 	global_position = player.global_position + offset

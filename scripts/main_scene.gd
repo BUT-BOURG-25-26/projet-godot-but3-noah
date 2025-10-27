@@ -2,6 +2,7 @@ extends Node3D
 
 @export var world_tile_scene: PackedScene
 @export var player_scene: PackedScene
+@export var camera_scene: PackedScene
 @export var zombie_spawner_scene: PackedScene
 @export var tile_size: float = 20.0
 @export var view_distance: int = 2
@@ -16,10 +17,14 @@ func _ready() -> void:
 	
 	update_tiles()
 	
-	var player_scene = player_scene.instantiate()
-	add_child(player_scene)
-	player_scene.global_position = Vector3(0, 0, 0)
-	player = player_scene.get_child(0)
+	var player = player_scene.instantiate()
+	add_child(player)
+	player.global_position = Vector3(0, 0, 0)
+	
+	var camera : Node3D = camera_scene.instantiate()
+	add_child(camera)
+	camera.global_position = Vector3(0, 3.5, 7.5)
+	camera.rotate(Vector3(1, 0, 0), -0.26)
 	
 	var zombie_spawner : Node3D = zombie_spawner_scene.instantiate()
 	add_child(zombie_spawner)
