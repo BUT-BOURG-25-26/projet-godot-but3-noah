@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c866pxi7a1mlb" path="res://scripts/entity/player/player.gd" id="1_eefhw"]
 [ext_resource type="PackedScene" uid="uid://ddo47f38ulwyw" path="res://scenes/ui/joystick.tscn" id="2_4fs46"]
+[ext_resource type="PackedScene" uid="uid://ce4icd657abht" path="res://scenes/entity_character/player/player_character.tscn" id="3_eefhw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqvra"]
+height = 2.90946
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgyl1"]
-albedo_color = Color(0.384314, 0, 0.831373, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1obkj"]
-material = SubResource("StandardMaterial3D_tgyl1")
+[sub_resource type="SphereShape3D" id="SphereShape3D_eefhw"]
+radius = 7.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 3
@@ -18,7 +17,21 @@ script = ExtResource("1_eefhw")
 joystick_scene = ExtResource("2_4fs46")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30342, 0)
 shape = SubResource("CapsuleShape3D_gqvra")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_1obkj")
+[node name="character-m" parent="." instance=ExtResource("3_eefhw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="range" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="range"]
+shape = SubResource("SphereShape3D_eefhw")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
+[connection signal="body_shape_entered" from="range" to="." method="_on_range_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

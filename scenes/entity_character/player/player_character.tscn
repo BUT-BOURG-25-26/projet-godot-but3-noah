@@ -1,0 +1,231 @@
+[gd_scene load_steps=40 format=3 uid="uid://ce4icd657abht"]
+
+[ext_resource type="PackedScene" uid="uid://btuvfe4r8cn3l" path="res://assets/kenney_blocky-characters_20/Models/FBX format/character-m.fbx" id="1_rabkb"]
+[ext_resource type="Script" uid="uid://c3torcdgs61sq" path="res://scripts/entity_character/player/player_character.gd" id="2_f6jr4"]
+[ext_resource type="PackedScene" uid="uid://bntjft3udvr88" path="res://scenes/armes/pistol/pistol.tscn" id="3_tr0kh"]
+[ext_resource type="PackedScene" uid="uid://dq1it4ty6qolo" path="res://scenes/armes/pistol/pistol_bullet.tscn" id="4_usykw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f6jr4"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4otlq"]
+animation = &"holding-right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dh0in"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3w5d1"]
+filter_enabled = true
+filters = ["character-m/root/torso/arm-right"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tr0kh"]
+graph_offset = Vector2(-457.05, 54.7479)
+nodes/isHolding/node = SubResource("AnimationNodeAnimation_4otlq")
+nodes/isHolding/position = Vector2(-40, 200)
+nodes/isIdle/node = SubResource("AnimationNodeAnimation_dh0in")
+nodes/isIdle/position = Vector2(-40, 20)
+nodes/isIdleHolding/node = SubResource("AnimationNodeBlend2_3w5d1")
+nodes/isIdleHolding/position = Vector2(140, 80)
+node_connections = [&"isIdleHolding", 0, &"isIdle", &"isIdleHolding", 1, &"isHolding", &"output", 0, &"isIdleHolding"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3w5d1"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_2cadi"]
+filter_enabled = true
+filters = ["character-m/root/torso/arm-right"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ld43g"]
+animation = &"holding-right-shoot"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pscrj"]
+graph_offset = Vector2(-485.436, 56.1545)
+nodes/isIdle/node = SubResource("AnimationNodeAnimation_3w5d1")
+nodes/isIdle/position = Vector2(-40, 60)
+nodes/isIdleShooting/node = SubResource("AnimationNodeBlend2_2cadi")
+nodes/isIdleShooting/position = Vector2(160, 80)
+nodes/isShooting/node = SubResource("AnimationNodeAnimation_ld43g")
+nodes/isShooting/position = Vector2(-60, 240)
+nodes/output/position = Vector2(340, 160)
+node_connections = [&"isIdleShooting", 0, &"isIdle", &"isIdleShooting", 1, &"isShooting", &"output", 0, &"isIdleShooting"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tr0kh"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3w6ah"]
+animation = &"holding-right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lp8up"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4otlq"]
+filter_enabled = true
+filters = ["character-m/root/torso/arm-right"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dh0in"]
+graph_offset = Vector2(-388.493, 29.6648)
+nodes/isHolding/node = SubResource("AnimationNodeAnimation_3w6ah")
+nodes/isHolding/position = Vector2(140, 220)
+nodes/isWalking/node = SubResource("AnimationNodeAnimation_lp8up")
+nodes/isWalking/position = Vector2(160, 40)
+nodes/isWalkingHolding/node = SubResource("AnimationNodeBlend2_4otlq")
+nodes/isWalkingHolding/position = Vector2(400, 40)
+nodes/output/position = Vector2(600, 80)
+node_connections = [&"isWalkingHolding", 0, &"isWalking", &"isWalkingHolding", 1, &"isHolding", &"output", 0, &"isWalkingHolding"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2cadi"]
+animation = &"holding-right-shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pscrj"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_g37y8"]
+filter_enabled = true
+filters = ["character-m/root/torso/arm-right"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g37y8"]
+graph_offset = Vector2(-618.72, -16.0139)
+nodes/isShooting/node = SubResource("AnimationNodeAnimation_2cadi")
+nodes/isShooting/position = Vector2(-80, 180)
+nodes/isWalking/node = SubResource("AnimationNodeAnimation_pscrj")
+nodes/isWalking/position = Vector2(-60, 0)
+nodes/isWalkingShooting/node = SubResource("AnimationNodeBlend2_g37y8")
+nodes/isWalkingShooting/position = Vector2(160, 80)
+nodes/output/position = Vector2(360, 140)
+node_connections = [&"isWalkingShooting", 0, &"isWalking", &"isWalkingShooting", 1, &"isShooting", &"output", 0, &"isWalkingShooting"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_usykw"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3w6ah"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lp8up"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isWalking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4otlq"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dh0in"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3w5d1"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_usykw"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isWalkingHolding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2cadi"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isWalking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ld43g"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pscrj"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isIdleHolding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tr0kh"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isIdleHolding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g37y8"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isIdleShooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vu4qj"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isWalkingHolding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5y1s4"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isWalkingShooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v7kum"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isWalkingHolding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iwy7t"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"isIdleHolding"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2cadi"]
+states/Start/position = Vector2(162, 100)
+states/die/node = SubResource("AnimationNodeAnimation_f6jr4")
+states/die/position = Vector2(418, 227)
+states/idle/node = SubResource("AnimationNodeAnimation_tr0kh")
+states/idle/position = Vector2(313, 169)
+states/idle&hold/node = SubResource("AnimationNodeBlendTree_tr0kh")
+states/idle&hold/position = Vector2(313, 58)
+states/idle&shoot/node = SubResource("AnimationNodeBlendTree_pscrj")
+states/idle&shoot/position = Vector2(313, -37)
+states/walk/node = SubResource("AnimationNodeAnimation_usykw")
+states/walk/position = Vector2(536, 169)
+states/walk&hold/node = SubResource("AnimationNodeBlendTree_dh0in")
+states/walk&hold/position = Vector2(536, 58)
+states/walk&shoot/node = SubResource("AnimationNodeBlendTree_g37y8")
+states/walk&shoot/position = Vector2(536, -37)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3w6ah"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lp8up"), "walk", "die", SubResource("AnimationNodeStateMachineTransition_4otlq"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_dh0in"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_3w5d1"), "walk", "walk&hold", SubResource("AnimationNodeStateMachineTransition_usykw"), "walk&hold", "walk", SubResource("AnimationNodeStateMachineTransition_2cadi"), "idle&hold", "idle", SubResource("AnimationNodeStateMachineTransition_ld43g"), "idle", "idle&hold", SubResource("AnimationNodeStateMachineTransition_pscrj"), "idle&shoot", "idle&hold", SubResource("AnimationNodeStateMachineTransition_tr0kh"), "idle&hold", "idle&shoot", SubResource("AnimationNodeStateMachineTransition_g37y8"), "walk&shoot", "walk&hold", SubResource("AnimationNodeStateMachineTransition_vu4qj"), "walk&hold", "walk&shoot", SubResource("AnimationNodeStateMachineTransition_5y1s4"), "idle&hold", "walk&hold", SubResource("AnimationNodeStateMachineTransition_v7kum"), "walk&hold", "idle&hold", SubResource("AnimationNodeStateMachineTransition_iwy7t")]
+graph_offset = Vector2(-132, -72)
+
+[node name="character-m" instance=ExtResource("1_rabkb")]
+script = ExtResource("2_f6jr4")
+arme_scene = ExtResource("3_tr0kh")
+bullet_scene = ExtResource("4_usykw")
+
+[node name="leg-left" parent="character-m/root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
+
+[node name="leg-right" parent="character-m/root" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 2.18378e-14)
+
+[node name="arm-left" parent="character-m/root/torso" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.4, 1.1, -0.0999999)
+
+[node name="arm-right" parent="character-m/root/torso" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.1, -0.0999999)
+
+[node name="weapon_socket" type="Marker3D" parent="character-m/root/torso/arm-right" index="0"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.47035e-08, 1, 8.74228e-08, 1, 4.47035e-08, -0.2, -1.0181, 0.0790439)
+
+[node name="head" parent="character-m/root/torso" index="2"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.2, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_2cadi")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDying = false
+parameters/conditions/isIdle = false
+parameters/conditions/isIdleHolding = false
+parameters/conditions/isIdleShooting = false
+parameters/conditions/isWalking = false
+parameters/conditions/isWalkingHolding = false
+parameters/conditions/isWalkingShooting = false
+parameters/idle&hold/isIdleHolding/blend_amount = 1.0
+parameters/idle&shoot/isIdleShooting/blend_amount = 1.0
+parameters/walk&hold/isWalkingHolding/blend_amount = 1.0
+parameters/walk&shoot/isWalkingShooting/blend_amount = 1.0
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="animation_player_changed" from="AnimationTree" to="." method="_on_animation_tree_animation_player_changed"]

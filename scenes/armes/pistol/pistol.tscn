@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bntjft3udvr88"]
+
+[ext_resource type="PackedScene" uid="uid://dwp8cs58p4kvi" path="res://assets/kenney_blaster-kit_2.1/Models/FBX format/blaster-b.fbx" id="1_0fhmy"]
+
+[node name="blaster-b" instance=ExtResource("1_0fhmy")]
+
+[node name="blaster-b" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
