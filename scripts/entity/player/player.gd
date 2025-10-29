@@ -8,14 +8,17 @@ var joystick : Node2D
 
 @onready var character_player : CharacterPlayer = $"character-m"
 @onready var animation_tree : AnimationTree = $"character-m/AnimationTree"
-@onready var range_area : CollisionShape3D = $range/CollisionShape3D
+@onready var area : CollisionShape3D = $range/CollisionShape3D
 @onready var timer_attack : Timer = $Timer
+
+@export var range_area : SphereShape3D
 
 @export var health : int
 @export var attack_damage : int
 @export var attack_speed : float
 @export var movement_speed : float
 @export var range : float
+
 @export var xp : int
 @export var level_xp_amount : int
 @export var level : int
@@ -24,8 +27,8 @@ var joystick : Node2D
 @export var is_aiming : bool = false
 @export var is_walking : bool = false
 
-var nearest_enemy : Zombie
-var enemies_in_range : Array[Zombie] = []
+@export var nearest_enemy : Zombie
+@export var enemies_in_range : Array[Zombie] = []
 
 func _ready() -> void:
 	health = 10
@@ -37,26 +40,29 @@ func _ready() -> void:
 	level_xp_amount = 200
 	level = 1
 	
-	var area : SphereShape3D = range_area.shape
-	area.radius = range
+	range_area = area.shape
+	range_area.radius = range
 	
 	timer_attack.wait_time = 1.0 / attack_speed
 
 func _physics_process(delta: float) -> void:
 	if !is_dead:
-		if Input.is_action_pressed("left_mouse_click"):
-			if !joystick_displayed:
-				joystick_displayed=true
-				joystick = joystick_scene.instantiate()
-				joystick.global_position = get_viewport().get_mouse_position()
-				add_child(joystick)
-		else:
-			if joystick_displayed:
-				joystick_displayed = false
-				joystick.queue_free()
+		joystick_manager()
 		player_aim()
 		player_movement()
 		player_animations()
+
+func joystick_manager() -> void:
+	if Input.is_action_pressed("left_mouse_click"):
+		if !joystick_displayed:
+			joystick_displayed=true
+			joystick = joystick_scene.instantiate()
+			joystick.global_position = get_viewport().get_mouse_position()
+			add_child(joystick)
+	else:
+		if joystick_displayed:
+			joystick_displayed = false
+			joystick.queue_free()
 
 func player_movement() -> void:
 	var move_inputs = read_move_inputs()
@@ -95,8 +101,6 @@ func player_animations() -> void:
 	animation_tree.set("parameters/conditions/isWalking", is_walking and !is_aiming)
 	animation_tree.set("parameters/conditions/isIdleHolding", !is_walking and is_aiming)
 	animation_tree.set("parameters/conditions/isWalkingHolding", is_walking and is_aiming)
-	animation_tree.set("parameters/conditions/isIdleShooting", false)
-	animation_tree.set("parameters/conditions/isWalkingShooting", false)
 
 func take_damage(damage_amount) -> void:
 	health-=damage_amount

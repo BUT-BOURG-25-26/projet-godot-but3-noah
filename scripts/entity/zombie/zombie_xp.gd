@@ -7,6 +7,6 @@ func _ready() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
-		var player : Player = get_tree().get_first_node_in_group("player")
+		var player : Player = GameManager.player
 		player.gain_xp(xp_amount)
 		queue_free()
