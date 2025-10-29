@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://wmxolhi5h37j"]
+
+[ext_resource type="Texture2D" uid="uid://4dct7mmsym15" path="res://textures/Flash.png" id="1_0se42"]
+[ext_resource type="Script" uid="uid://cw6tkdluv2a0" path="res://scripts/armes/pistol/shoot_vfx.gd" id="1_2y2a5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y2a5"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_0se42")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_2y2a5"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kbnj6"]
+curve = SubResource("Curve_2y2a5")
+
+[sub_resource type="Curve" id="Curve_iqbb5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fxue0"]
+curve = SubResource("Curve_iqbb5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_taq4a"]
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_fxue0")
+color = Color(1, 0.364706, 0, 1)
+alpha_curve = SubResource("CurveTexture_kbnj6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2oikw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gj3hs"]
+
+[node name="ShootVfx" type="Area3D"]
+script = ExtResource("1_2y2a5")
+
+[node name="Flash" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2y2a5")
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_taq4a")
+draw_pass_1 = SubResource("QuadMesh_2oikw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_gj3hs")
+
+[connection signal="finished" from="Flash" to="." method="_on_flash_finished"]

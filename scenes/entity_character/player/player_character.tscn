@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://ce4icd657abht"]
+[gd_scene load_steps=45 format=3 uid="uid://ce4icd657abht"]
 
 [ext_resource type="PackedScene" uid="uid://btuvfe4r8cn3l" path="res://assets/kenney_blocky-characters_20/Models/FBX format/character-m.fbx" id="1_rabkb"]
 [ext_resource type="Script" uid="uid://c3torcdgs61sq" path="res://scripts/entity_character/player/player_character.gd" id="2_f6jr4"]
 [ext_resource type="PackedScene" uid="uid://bntjft3udvr88" path="res://scenes/armes/pistol/pistol.tscn" id="3_tr0kh"]
 [ext_resource type="PackedScene" uid="uid://dq1it4ty6qolo" path="res://scenes/armes/pistol/pistol_bullet.tscn" id="4_usykw"]
+[ext_resource type="PackedScene" uid="uid://wmxolhi5h37j" path="res://scenes/armes/pistol/shoot_vfx.tscn" id="5_3w6ah"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f6jr4"]
 animation = &"die"
@@ -39,7 +40,7 @@ filters = ["character-m/root/torso/arm-right"]
 animation = &"holding-right-shoot"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pscrj"]
-graph_offset = Vector2(-485.436, 56.1545)
+graph_offset = Vector2(-343, 94)
 nodes/isIdle/node = SubResource("AnimationNodeAnimation_3w5d1")
 nodes/isIdle/position = Vector2(-40, 60)
 nodes/isIdleShooting/node = SubResource("AnimationNodeBlend2_2cadi")
@@ -101,98 +102,119 @@ animation = &"walk"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lp8up"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isWalking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4otlq"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isDying"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dh0in"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isDying"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3w5d1"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isIdle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_usykw"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isWalkingHolding"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2cadi"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isWalking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ld43g"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isIdle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pscrj"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isIdleHolding"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tr0kh"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isIdleHolding"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g37y8"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isIdleShooting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vu4qj"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isWalkingHolding"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5y1s4"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isWalkingShooting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v7kum"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isWalkingHolding"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iwy7t"]
-xfade_time = 0.1
+xfade_time = 0.15
 advance_mode = 2
 advance_condition = &"isIdleHolding"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_31hb3"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isIdleShooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uew6d"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5hls8"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isWalkingShooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6lclk"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isWalking"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2cadi"]
-states/Start/position = Vector2(162, 100)
+states/Start/position = Vector2(-154, 169)
 states/die/node = SubResource("AnimationNodeAnimation_f6jr4")
-states/die/position = Vector2(418, 227)
+states/die/position = Vector2(-5, 324)
 states/idle/node = SubResource("AnimationNodeAnimation_tr0kh")
-states/idle/position = Vector2(313, 169)
+states/idle/position = Vector2(-5, 169)
 states/idle&hold/node = SubResource("AnimationNodeBlendTree_tr0kh")
-states/idle&hold/position = Vector2(313, 58)
+states/idle&hold/position = Vector2(157, 67)
 states/idle&shoot/node = SubResource("AnimationNodeBlendTree_pscrj")
-states/idle&shoot/position = Vector2(313, -37)
+states/idle&shoot/position = Vector2(23, -58)
 states/walk/node = SubResource("AnimationNodeAnimation_usykw")
-states/walk/position = Vector2(536, 169)
+states/walk/position = Vector2(294, 230)
 states/walk&hold/node = SubResource("AnimationNodeBlendTree_dh0in")
 states/walk&hold/position = Vector2(536, 58)
 states/walk&shoot/node = SubResource("AnimationNodeBlendTree_g37y8")
-states/walk&shoot/position = Vector2(536, -37)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3w6ah"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lp8up"), "walk", "die", SubResource("AnimationNodeStateMachineTransition_4otlq"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_dh0in"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_3w5d1"), "walk", "walk&hold", SubResource("AnimationNodeStateMachineTransition_usykw"), "walk&hold", "walk", SubResource("AnimationNodeStateMachineTransition_2cadi"), "idle&hold", "idle", SubResource("AnimationNodeStateMachineTransition_ld43g"), "idle", "idle&hold", SubResource("AnimationNodeStateMachineTransition_pscrj"), "idle&shoot", "idle&hold", SubResource("AnimationNodeStateMachineTransition_tr0kh"), "idle&hold", "idle&shoot", SubResource("AnimationNodeStateMachineTransition_g37y8"), "walk&shoot", "walk&hold", SubResource("AnimationNodeStateMachineTransition_vu4qj"), "walk&hold", "walk&shoot", SubResource("AnimationNodeStateMachineTransition_5y1s4"), "idle&hold", "walk&hold", SubResource("AnimationNodeStateMachineTransition_v7kum"), "walk&hold", "idle&hold", SubResource("AnimationNodeStateMachineTransition_iwy7t")]
-graph_offset = Vector2(-132, -72)
+states/walk&shoot/position = Vector2(564, 282)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_3w6ah"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_lp8up"), "walk", "die", SubResource("AnimationNodeStateMachineTransition_4otlq"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_dh0in"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_3w5d1"), "walk", "walk&hold", SubResource("AnimationNodeStateMachineTransition_usykw"), "walk&hold", "walk", SubResource("AnimationNodeStateMachineTransition_2cadi"), "idle&hold", "idle", SubResource("AnimationNodeStateMachineTransition_ld43g"), "idle", "idle&hold", SubResource("AnimationNodeStateMachineTransition_pscrj"), "idle&shoot", "idle&hold", SubResource("AnimationNodeStateMachineTransition_tr0kh"), "idle&hold", "idle&shoot", SubResource("AnimationNodeStateMachineTransition_g37y8"), "walk&shoot", "walk&hold", SubResource("AnimationNodeStateMachineTransition_vu4qj"), "walk&hold", "walk&shoot", SubResource("AnimationNodeStateMachineTransition_5y1s4"), "idle&hold", "walk&hold", SubResource("AnimationNodeStateMachineTransition_v7kum"), "walk&hold", "idle&hold", SubResource("AnimationNodeStateMachineTransition_iwy7t"), "idle", "idle&shoot", SubResource("AnimationNodeStateMachineTransition_31hb3"), "idle&shoot", "idle", SubResource("AnimationNodeStateMachineTransition_uew6d"), "walk", "walk&shoot", SubResource("AnimationNodeStateMachineTransition_5hls8"), "walk&shoot", "walk", SubResource("AnimationNodeStateMachineTransition_6lclk")]
+graph_offset = Vector2(-524, -72)
 
 [node name="character-m" instance=ExtResource("1_rabkb")]
 script = ExtResource("2_f6jr4")
 arme_scene = ExtResource("3_tr0kh")
 bullet_scene = ExtResource("4_usykw")
+shoot_vfx_scene = ExtResource("5_3w6ah")
 
 [node name="leg-left" parent="character-m/root" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
@@ -200,17 +222,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
 [node name="leg-right" parent="character-m/root" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 2.18378e-14)
 
+[node name="torso" parent="character-m/root" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.996453, 0.0841551, 0, -0.0841551, 0.996453, 0, 0.7, 0)
+
 [node name="arm-left" parent="character-m/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.967929, 0.251218, 0, -0.251218, 0.967929, 0.4, 1.1, -0.0999999)
 
 [node name="arm-right" parent="character-m/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.96793, 0.251219, 0, -0.251219, 0.96793, -0.4, 1.1, -0.0999999)
 
 [node name="weapon_socket" type="Marker3D" parent="character-m/root/torso/arm-right" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.47035e-08, 1, 8.74228e-08, 1, 4.47035e-08, -0.2, -1.0181, 0.0790439)
 
 [node name="head" parent="character-m/root/torso" index="2"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.2, 0)
+transform = Transform3D(0.096793, 0, 0.0251219, 0, 0.1, 0, -0.0251219, 0, 0.096793, 0, 1.2, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_2cadi")

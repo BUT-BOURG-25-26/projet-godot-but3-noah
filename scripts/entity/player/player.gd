@@ -30,7 +30,7 @@ var enemies_in_range : Array[Zombie] = []
 func _ready() -> void:
 	health = 10
 	attack_damage = 5
-	attack_speed = 1
+	attack_speed = 5
 	movement_speed = 7
 	range = 7
 	xp = 0
@@ -147,5 +147,5 @@ func _on_range_body_exited(body: Node3D) -> void:
 		update_nearest_enemy()
 
 func _on_timer_timeout() -> void:
-	if nearest_enemy!=null:
+	if is_aiming:
 		character_player.attack(attack_damage, nearest_enemy)

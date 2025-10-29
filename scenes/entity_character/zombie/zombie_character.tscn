@@ -16,22 +16,22 @@ animation = &"walk"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2rw1g"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isSprinting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_myakm"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isWalking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v46k1"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isDying"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7kse2"]
-xfade_time = 0.1
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"isDying"
 
@@ -47,20 +47,23 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 [node name="character-l" instance=ExtResource("1_wvnvu")]
 script = ExtResource("2_ndajb")
 
+[node name="root" parent="character-l" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0895991, 0)
+
 [node name="leg-left" parent="character-l/root" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
+transform = Transform3D(1, 0, 0, 0, 0.524939, 0.85114, 0, -0.85114, 0.524939, 0.2, 1, 2.03489e-14)
 
 [node name="leg-right" parent="character-l/root" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 2.18378e-14)
+transform = Transform3D(1, 0, 0, 0, 0.524939, -0.85114, 0, 0.85114, 0.524939, -0.2, 1, 2.18378e-14)
 
 [node name="arm-left" parent="character-l/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.633765, -0.773525, 0, 0.773525, 0.633765, 0.4, 1.1, -0.0999999)
 
 [node name="arm-right" parent="character-l/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.633765, 0.773525, 0, -0.773525, 0.633765, -0.4, 1.1, -0.0999999)
 
 [node name="head" parent="character-l/root/torso" index="2"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.2, 0)
+transform = Transform3D(0.0985606, 0, -0.0169059, 0, 0.1, 0, 0.0169059, 0, 0.0985606, 0, 1.2, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_wvnvu")
