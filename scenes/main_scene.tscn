@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ijt3x48qbcmc"]
+[gd_scene load_steps=9 format=3 uid="uid://ijt3x48qbcmc"]
 
 [ext_resource type="Script" uid="uid://r2my3a5n4e4v" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://dj7so6rtr0m71" path="res://scenes/entity/player/player.tscn" id="3_pu3yx"]
-[ext_resource type="PackedScene" uid="uid://da2wsgwx4bbtj" path="res://scenes/entity/player/camera.tscn" id="4_gubc5"]
+[ext_resource type="PackedScene" uid="uid://da2wsgwx4bbtj" path="res://scenes/entity/camera.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://bkq3ont8slvcc" path="res://scenes/entity/zombie/zombie_spawner.tscn" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://rlx7vkltgig6" path="res://scenes/world_gen/world_tiles_generator.tscn" id="5_gubc5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2twt"]
 
@@ -20,6 +21,7 @@ script = ExtResource("1_pw63i")
 player_scene = ExtResource("3_pu3yx")
 camera_scene = ExtResource("4_gubc5")
 zombie_spawner_scene = ExtResource("4_pu3yx")
+world_tiles_generator_scene = ExtResource("5_gubc5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w2twt")

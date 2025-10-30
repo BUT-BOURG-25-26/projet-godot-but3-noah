@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci8q44rood7u"]
+
+[ext_resource type="Script" uid="uid://drnl3iloqkqfy" path="res://scripts/entity/power_up/attack_speed_power_up.gd" id="1_b8qkm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j208f"]
+albedo_color = Color(0.87451, 0.87451, 0.309804, 1)
+metallic = 0.8
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_b8qkm"]
+material = SubResource("StandardMaterial3D_j208f")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tp32d"]
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ldge"]
+radius = 1.0
+
+[node name="AttackSpeedPowerUp" type="StaticBody3D"]
+script = ExtResource("1_b8qkm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_b8qkm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_tp32d")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_8ldge")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

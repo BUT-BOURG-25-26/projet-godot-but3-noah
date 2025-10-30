@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://1o8cbdbfjnh4"]
+
+[ext_resource type="Script" uid="uid://ddmraygwcsyex" path="res://scripts/entity/power_up/damage_power_up.gd" id="1_jeut2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8b478"]
+albedo_color = Color(1, 0.416603, 0.347925, 1)
+metallic = 0.8
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_jeut2"]
+material = SubResource("StandardMaterial3D_8b478")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2qo78"]
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5ljcw"]
+radius = 1.0
+
+[node name="DamagePowerUp" type="StaticBody3D"]
+script = ExtResource("1_jeut2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jeut2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_2qo78")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_5ljcw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

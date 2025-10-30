@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpqp1w3ly53yp"]
+
+[ext_resource type="Script" uid="uid://cwajxecttvcjs" path="res://scripts/entity/power_up/xp_power_up.gd" id="1_3jcr6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fruxq"]
+albedo_color = Color(0.14349, 1, 0.127226, 1)
+metallic = 0.8
+roughness = 0.0
+billboard_keep_scale = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_fruxq"]
+material = SubResource("StandardMaterial3D_fruxq")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3jcr6"]
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qiydo"]
+radius = 1.0
+
+[node name="XpPowerUp" type="StaticBody3D"]
+script = ExtResource("1_3jcr6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_fruxq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3jcr6")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qiydo")
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

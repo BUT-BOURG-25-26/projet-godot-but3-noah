@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl6ieex6xd00o"]
+[gd_scene load_steps=9 format=3 uid="uid://bl6ieex6xd00o"]
 
 [ext_resource type="Script" uid="uid://bw6p5msbp5fcy" path="res://scripts/entity/zombie/zombie.gd" id="1_lf6ul"]
 [ext_resource type="PackedScene" uid="uid://c3fbxgdgodpha" path="res://scenes/entity/zombie/zombie_xp.tscn" id="2_yayp3"]
+[ext_resource type="PackedScene" uid="uid://cpqp1w3ly53yp" path="res://scenes/entity/power_up/xp_power_up.tscn" id="3_aw7c3"]
 [ext_resource type="PackedScene" uid="uid://duhvbw1b2xg81" path="res://scenes/entity_character/zombie/zombie_character.tscn" id="3_yayp3"]
+[ext_resource type="PackedScene" uid="uid://1o8cbdbfjnh4" path="res://scenes/entity/power_up/damage_power_up.tscn" id="4_lhq3a"]
+[ext_resource type="PackedScene" uid="uid://ci8q44rood7u" path="res://scenes/entity/power_up/attack_speed_power_up.tscn" id="5_2s01h"]
+[ext_resource type="PackedScene" uid="uid://cvmipeaspiav1" path="res://scenes/entity/power_up/speed_power_up.tscn" id="6_x3o8m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f8fn2"]
 height = 2.90449
@@ -10,6 +14,10 @@ height = 2.90449
 [node name="Zombie" type="CharacterBody3D"]
 script = ExtResource("1_lf6ul")
 zombie_xp_scene = ExtResource("2_yayp3")
+xp_power_up_scene = ExtResource("3_aw7c3")
+damage_power_up_scene = ExtResource("4_lhq3a")
+attack_speed_power_up_scene = ExtResource("5_2s01h")
+speed_power_up_scene = ExtResource("6_x3o8m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26849, 0)

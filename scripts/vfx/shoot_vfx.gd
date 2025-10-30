@@ -4,6 +4,9 @@ class_name VFX
 
 @onready var flash = $Flash
 
+func _ready() -> void:
+	emit()
+
 func emit():
 	flash.emitting = true
 

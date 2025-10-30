@@ -1,10 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://ce4icd657abht"]
+[gd_scene load_steps=34 format=3 uid="uid://ce4icd657abht"]
 
 [ext_resource type="PackedScene" uid="uid://btuvfe4r8cn3l" path="res://assets/kenney_blocky-characters_20/Models/FBX format/character-m.fbx" id="1_rabkb"]
 [ext_resource type="Script" uid="uid://c3torcdgs61sq" path="res://scripts/entity_character/player/player_character.gd" id="2_f6jr4"]
+[ext_resource type="PackedScene" uid="uid://bsdirdbqjmylf" path="res://scenes/armes/shotgun/shotgun.tscn" id="3_3w6ah"]
 [ext_resource type="PackedScene" uid="uid://bntjft3udvr88" path="res://scenes/armes/pistol/pistol.tscn" id="3_tr0kh"]
-[ext_resource type="PackedScene" uid="uid://dq1it4ty6qolo" path="res://scenes/armes/pistol/pistol_bullet.tscn" id="4_usykw"]
-[ext_resource type="PackedScene" uid="uid://wmxolhi5h37j" path="res://scenes/armes/pistol/shoot_vfx.tscn" id="5_3w6ah"]
+[ext_resource type="PackedScene" uid="uid://dskaesol0yxwl" path="res://scenes/armes/bullet.tscn" id="4_usykw"]
+[ext_resource type="PackedScene" uid="uid://wmxolhi5h37j" path="res://scenes/vfx/shoot_vfx.tscn" id="5_3w6ah"]
+[ext_resource type="PackedScene" uid="uid://w45fosc2hho6" path="res://scenes/armes/rifle/rifle.tscn" id="5_dh0in"]
+[ext_resource type="PackedScene" uid="uid://cqrsbj0x20ewa" path="res://scenes/armes/sniper/sniper.tscn" id="6_3w5d1"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f6jr4"]
 animation = &"die"
@@ -136,7 +139,10 @@ graph_offset = Vector2(-443, 34)
 
 [node name="character-m" instance=ExtResource("1_rabkb")]
 script = ExtResource("2_f6jr4")
-arme_scene = ExtResource("3_tr0kh")
+pistol_scene = ExtResource("3_tr0kh")
+shotgun_scene = ExtResource("3_3w6ah")
+rifle_scene = ExtResource("5_dh0in")
+sniper_scene = ExtResource("6_3w5d1")
 bullet_scene = ExtResource("4_usykw")
 shoot_vfx_scene = ExtResource("5_3w6ah")
 
@@ -147,19 +153,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 2.18378e-14)
 
 [node name="torso" parent="character-m/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.999855, 0.017095, 0, -0.017095, 0.999855, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.996405, -0.0847347, 0, 0.0847347, 0.996405, 0, 0.7, 0)
 
 [node name="arm-left" parent="character-m/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.998684, 0.0512654, 0, -0.0512654, 0.998684, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.967769, -0.251835, 0, 0.251835, 0.967769, 0.4, 1.1, -0.0999999)
 
 [node name="arm-right" parent="character-m/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.998685, 0.0512654, 0, -0.0512654, 0.998685, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.96777, -0.251835, 0, 0.251835, 0.96777, -0.4, 1.1, -0.0999999)
 
 [node name="weapon_socket" type="Marker3D" parent="character-m/root/torso/arm-right" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.47035e-08, 1, 8.74228e-08, 1, 4.47035e-08, -0.2, -1.0181, 0.0790439)
 
 [node name="head" parent="character-m/root/torso" index="2"]
-transform = Transform3D(0.0998685, 0, 0.00512654, 0, 0.1, 0, -0.00512654, 0, 0.0998685, 0, 1.2, 0)
+transform = Transform3D(0.096777, 0, -0.0251835, 0, 0.1, 0, 0.0251835, 0, 0.096777, 0, 1.2, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_2cadi")

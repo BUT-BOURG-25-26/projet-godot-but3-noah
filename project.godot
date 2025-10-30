@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Moteur3D-Projet-Template"
-run/main_scene="uid://ijt3x48qbcmc"
+run/main_scene="uid://yifcusm43fkf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

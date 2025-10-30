@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://rlx7vkltgig6"]
+
+[ext_resource type="Script" uid="uid://dvw1ehwm8y4w3" path="res://scripts/world_gen/world_tiles_generator.gd" id="1_t2w6a"]
+[ext_resource type="PackedScene" uid="uid://d14pfdvg3or51" path="res://scenes/world_gen/world_tile.tscn" id="2_80mkm"]
+
+[node name="WorldTilesGenerator" type="Node3D"]
+script = ExtResource("1_t2w6a")
+world_tile_scene = ExtResource("2_80mkm")

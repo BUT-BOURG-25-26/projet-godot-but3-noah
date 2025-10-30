@@ -28,10 +28,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="range"]
 shape = SubResource("SphereShape3D_eefhw")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerAttack" type="Timer" parent="."]
 autostart = true
+
+[node name="TimerPowerUp" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
 
 [connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
 [connection signal="body_shape_entered" from="range" to="." method="_on_range_body_shape_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="TimerPowerUp" to="." method="_on_timer_power_up_timeout"]

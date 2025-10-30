@@ -2,13 +2,16 @@ extends CharacterBody3D
 
 class_name Zombie
 
-var player : Player
-
+@onready var player : Player = GameManager.player
 @onready var character_zombie : CharacterZombie = $"character-l"
+@onready var animation_tree : AnimationTree = character_zombie.get_node("AnimationTree")
 
-@export var animation_tree : AnimationTree
+@export var zombie_xp_scene : PackedScene
+@export var xp_power_up_scene : PackedScene
+@export var damage_power_up_scene : PackedScene
+@export var attack_speed_power_up_scene : PackedScene
+@export var speed_power_up_scene : PackedScene
 
-@export var zombie_xp_scene: PackedScene
 @export var health : int
 @export var attack : int
 @export var movement_speed : float
@@ -19,15 +22,15 @@ func _ready() -> void:
 	health = 10
 	attack = 3
 	movement_speed = 3
-	
-	player = GameManager.player
-	animation_tree = character_zombie.get_node("AnimationTree")
 
 func _physics_process(delta: float) -> void:
 	if !is_dead :
 		zombie_movement()
 		if health<=0:
 			is_dead = true
+			power_up_appears()
+			GameManager.kill_count+=1
+			GameManager.enemies_alive-=1
 			animation_tree.set("parameters/conditions/isDying", true)
 
 func _on_tree_exiting() -> void:
@@ -54,3 +57,20 @@ func zombie_movement() -> void:
 	else:
 		animation_tree.set("parameters/conditions/isWalking", true)
 	move_and_slide()
+
+func power_up_appears() -> void:
+	var luck : int = int(randf_range(0, 10))
+	print(luck)
+	var power_up : StaticBody3D
+	if luck == 5:
+		power_up = xp_power_up_scene.instantiate()
+	if luck == 8:
+		power_up = damage_power_up_scene.instantiate()
+	if luck == 3:
+		power_up = attack_speed_power_up_scene.instantiate()
+	if luck == 1:
+		power_up = speed_power_up_scene.instantiate()
+	if power_up!=null:
+		GameManager.origin_node.add_child(power_up)
+		power_up.global_position = global_position
+		power_up.global_position.y = 0.5

@@ -1,0 +1,154 @@
+[gd_scene load_steps=13 format=3 uid="uid://yifcusm43fkf"]
+
+[ext_resource type="Script" uid="uid://dcor1m6661gjm" path="res://scripts/ui/weapon_choice.gd" id="1_erh4f"]
+[ext_resource type="Texture2D" uid="uid://c17k21gp1y1h7" path="res://assets/kenney_blaster-kit_2.1/Previews/blaster-b.png" id="1_yfy40"]
+[ext_resource type="Texture2D" uid="uid://nt81uuhjj7gp" path="res://assets/kenney_blaster-kit_2.1/Previews/blaster-d.png" id="2_6ovft"]
+[ext_resource type="PackedScene" uid="uid://bntjft3udvr88" path="res://scenes/armes/pistol/pistol.tscn" id="2_wmu4h"]
+[ext_resource type="PackedScene" uid="uid://w45fosc2hho6" path="res://scenes/armes/rifle/rifle.tscn" id="3_0e47r"]
+[ext_resource type="Texture2D" uid="uid://cefqqcqgwdrto" path="res://assets/kenney_blaster-kit_2.1/Previews/blaster-f.png" id="3_erh4f"]
+[ext_resource type="Texture2D" uid="uid://bppk8nt6rx5sw" path="res://assets/kenney_blaster-kit_2.1/Previews/blaster-h.png" id="4_cql8c"]
+[ext_resource type="PackedScene" uid="uid://bsdirdbqjmylf" path="res://scenes/armes/shotgun/shotgun.tscn" id="4_kyugh"]
+[ext_resource type="PackedScene" uid="uid://cqrsbj0x20ewa" path="res://scenes/armes/sniper/sniper.tscn" id="5_vlv46"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0151"]
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl0s8"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmu4h"]
+bg_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="WeaponChoice" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+script = ExtResource("1_erh4f")
+pistol_scene = ExtResource("2_wmu4h")
+rifle_scene = ExtResource("3_0e47r")
+shotgun_scene = ExtResource("4_kyugh")
+sniper_scene = ExtResource("5_vlv46")
+
+[node name="PistolSprite" type="Sprite2D" parent="."]
+position = Vector2(192, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("1_yfy40")
+
+[node name="RifleSprite" type="Sprite2D" parent="."]
+position = Vector2(448, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6ovft")
+
+[node name="SniperSprite" type="Sprite2D" parent="."]
+position = Vector2(704, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("3_erh4f")
+
+[node name="ShotgunSprite" type="Sprite2D" parent="."]
+position = Vector2(960, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("4_cql8c")
+
+[node name="PistolLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 256.0
+offset_bottom = 221.0
+text = "Pistol"
+label_settings = SubResource("LabelSettings_f0151")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SniperLabel" type="Label" parent="."]
+offset_left = 640.0
+offset_top = 160.0
+offset_right = 768.0
+offset_bottom = 224.0
+text = "Sniper"
+label_settings = SubResource("LabelSettings_f0151")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShotgunLabel" type="Label" parent="."]
+offset_left = 896.0
+offset_top = 160.0
+offset_right = 1024.0
+offset_bottom = 224.0
+text = "Shotgun"
+label_settings = SubResource("LabelSettings_f0151")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RifleLabel" type="Label" parent="."]
+offset_left = 384.0
+offset_top = 160.0
+offset_right = 512.0
+offset_bottom = 224.0
+text = "Rifle"
+label_settings = SubResource("LabelSettings_f0151")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RifleButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 416.0
+offset_right = 512.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
+text = "Choose"
+
+[node name="PistolButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 416.0
+offset_right = 256.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
+text = "Choose"
+
+[node name="ShotgunButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 416.0
+offset_right = 1024.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
+text = "Choose"
+
+[node name="SniperButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 416.0
+offset_right = 768.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
+text = "Choose"

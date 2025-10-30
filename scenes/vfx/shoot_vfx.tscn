@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://wmxolhi5h37j"]
 
 [ext_resource type="Texture2D" uid="uid://4dct7mmsym15" path="res://textures/Flash.png" id="1_0se42"]
-[ext_resource type="Script" uid="uid://cw6tkdluv2a0" path="res://scripts/armes/pistol/shoot_vfx.gd" id="1_2y2a5"]
+[ext_resource type="Script" uid="uid://cw6tkdluv2a0" path="res://scripts/vfx/shoot_vfx.gd" id="1_2y2a5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y2a5"]
 transparency = 1
@@ -56,4 +56,5 @@ draw_pass_1 = SubResource("QuadMesh_2oikw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_gj3hs")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="finished" from="Flash" to="." method="_on_flash_finished"]

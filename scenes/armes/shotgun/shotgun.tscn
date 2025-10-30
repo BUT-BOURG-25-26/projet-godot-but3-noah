@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsdirdbqjmylf"]
+
+[ext_resource type="PackedScene" uid="uid://espvgaw74t11" path="res://assets/kenney_blaster-kit_2.1/Models/FBX format/blaster-h.fbx" id="1_npvnu"]
+[ext_resource type="Script" uid="uid://d1dl834yqnehj" path="res://scripts/armes/shotgun/shotgun.gd" id="2_qbo7s"]
+[ext_resource type="PackedScene" uid="uid://dskaesol0yxwl" path="res://scenes/armes/bullet.tscn" id="3_4dbsg"]
+[ext_resource type="PackedScene" uid="uid://wmxolhi5h37j" path="res://scenes/vfx/shoot_vfx.tscn" id="4_duxcf"]
+
+[node name="blaster-h" instance=ExtResource("1_npvnu")]
+script = ExtResource("2_qbo7s")
+bullet_scene = ExtResource("3_4dbsg")
+shoot_vfx_scene = ExtResource("4_duxcf")
+
+[node name="blaster-h" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.0817848, -0.337551)
+
+[node name="output" type="Marker3D" parent="blaster-h" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0261556, -0.275748)
