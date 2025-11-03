@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpqp1w3ly53yp"]
+[gd_scene load_steps=7 format=3 uid="uid://cpqp1w3ly53yp"]
 
 [ext_resource type="Script" uid="uid://cwajxecttvcjs" path="res://scripts/entity/power_up/xp_power_up.gd" id="1_3jcr6"]
+[ext_resource type="PackedScene" uid="uid://brx30rcknya6c" path="res://scenes/vfx/power_up_vfx.tscn" id="2_qiydo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fruxq"]
 albedo_color = Color(0.14349, 1, 0.127226, 1)
@@ -20,7 +21,11 @@ radius = 0.4
 radius = 1.0
 
 [node name="XpPowerUp" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_3jcr6")
+
+[node name="PowerUpXpVfx" parent="." instance=ExtResource("2_qiydo")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_fruxq")

@@ -60,7 +60,6 @@ func zombie_movement() -> void:
 
 func power_up_appears() -> void:
 	var luck : int = int(randf_range(0, 10))
-	print(luck)
 	var power_up : StaticBody3D
 	if luck == 5:
 		power_up = xp_power_up_scene.instantiate()

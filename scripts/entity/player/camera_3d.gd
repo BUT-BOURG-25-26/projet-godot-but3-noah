@@ -1,11 +1,22 @@
 extends Camera3D
 
 @export var offset : Vector3
+@export var max_offset : Vector3
+@export var min_offset : Vector3
+
 var player : Player
 
 func _ready() -> void:
 	player = GameManager.player
+	max_offset = offset + Vector3(0, 3, 3)
+	min_offset = offset
 
 func _process(delta: float) -> void:
-	global_position = player.global_position + offset
+	if player.speed_power_up_active:
+		if offset <= max_offset:
+			offset = offset + Vector3(0, 0.01, 0.01)
+	else:
+		if offset >= min_offset:
+			offset = offset - Vector3(0, 0.01, 0.01)
+	global_position = player.global_position + offset		
 	return

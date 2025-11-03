@@ -1,5 +1,8 @@
 extends Node3D
 
+@onready var level_up_stats_ui : Control = $LvlUpStats
+@onready var game_over_ui : Control = $GameOver
+
 @export var player_scene : PackedScene
 @export var camera_scene : PackedScene
 @export var zombie_spawner_scene : PackedScene
@@ -9,6 +12,8 @@ var player : Player
 
 func _ready() -> void:
 	GameManager.origin_node = self
+	GameManager.level_up_stats_ui = level_up_stats_ui
+	GameManager.game_over_ui = game_over_ui
 	
 	var player = player_scene.instantiate()
 	var camera : Node3D = camera_scene.instantiate()
