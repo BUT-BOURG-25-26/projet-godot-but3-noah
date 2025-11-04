@@ -3,8 +3,9 @@ extends Node
 @onready var weapon_choice_scene : PackedScene = preload("res://scenes/ui/weapon_choice.tscn")
 @onready var main_scene : PackedScene = preload("res://scenes/main_scene.tscn")
 
-var level_up_stats_ui : Control
+var level_up_stats_ui : LevelUpStats
 var game_over_ui : Control
+var stats_panel_ui : StatsPanel
 
 var origin_node : Node3D
 var player : Player
@@ -29,4 +30,5 @@ func game_over() -> void:
 
 func level_up_stats() -> void:
 	level_up_stats_ui.visible = true
+	level_up_stats_ui.cards_roll()
 	Engine.time_scale = 0.0

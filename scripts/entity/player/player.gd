@@ -18,6 +18,7 @@ var joystick : Node2D
 @export var range_area : SphereShape3D
 
 @export var health : int
+@export var max_health : int
 @export var attack_damage : int
 @export var attack_speed : float
 @export var movement_speed : float
@@ -43,17 +44,20 @@ var joystick : Node2D
 @export var enemies_in_range : Array[Zombie] = []
 
 func _ready() -> void:
+	max_health = 10
 	health = 10
 	attack_damage = GameManager.weapon.damage
 	attack_speed = GameManager.weapon.attack_speed
 	movement_speed = 7
 	range = GameManager.weapon.range
 	xp = 0
-	level_xp_amount = 200
+	level_xp_amount = 100
 	level = 1
 	
 	range_area = area.shape
 	range_area.radius = range
+	
+	GameManager.stats_panel_ui.update()
 	
 	timer_attack.wait_time = 1.0 / attack_speed
 
@@ -120,6 +124,7 @@ func player_animations() -> void:
 func take_damage(damage_amount) -> void:
 	health-=damage_amount
 	if health<=0:
+		health=0
 		is_dead = true
 		animation_tree.set("parameters/conditions/isDying", true)
 
@@ -127,30 +132,38 @@ func attack_speed_change(attack_speed) -> void:
 	self.attack_speed += attack_speed
 	timer_attack.wait_time = 1.0 / self.attack_speed
 
+func range_change(range) -> void:
+	self.range += range
+	range_area.radius = range
+
 func gain_xp(xp_amount) -> void:
 	xp+=xp_amount
 	level_up()
 
 func level_up() -> void:
 	if xp >= level_xp_amount:
-		GameManager.level_up_stats()
 		level+=1
-		level_xp_amount = level_xp_amount*2 - xp
+		level_xp_amount = level_xp_amount*2
 		xp = 0
+		GameManager.stats_panel_ui.update()
+		GameManager.level_up_stats()
 
 func gestion_power_up() -> void:
 	if attack_speed_power_up_received:
 		attack_speed_power_up_active = true
 		attack_speed_power_up_received = false
 		timer_power_up_attack_speed.start()
+		GameManager.stats_panel_ui.update()
 	if speed_power_up_received:
 		speed_power_up_active = true
 		speed_power_up_received = false
 		timer_power_up_speed.start()
+		GameManager.stats_panel_ui.update()
 	if damage_power_up_received:
 		damage_power_up_active = true
 		damage_power_up_received = false
 		timer_power_up_damage.start()
+		GameManager.stats_panel_ui.update()
 
 func update_nearest_enemy() -> void:
 	if enemies_in_range.is_empty():
@@ -189,11 +202,14 @@ func _on_timer_attack_timeout() -> void:
 func _on_timer_power_up_attack_speed_timeout() -> void:
 	attack_speed_power_up_active = false
 	attack_speed_change(-1)
+	GameManager.stats_panel_ui.update()
 
 func _on_timer_power_up_speed_timeout() -> void:
 	speed_power_up_active = false
 	movement_speed-=3
+	GameManager.stats_panel_ui.update()
 
 func _on_timer_power_up_damage_timeout() -> void:
 	damage_power_up_active = false
 	attack_damage-=10
+	GameManager.stats_panel_ui.update()

@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var level_up_stats_ui : Control = $LvlUpStats
 @onready var game_over_ui : Control = $GameOver
+@onready var stats_panel_ui : Control = $StatsPanel
 
 @export var player_scene : PackedScene
 @export var camera_scene : PackedScene
@@ -14,6 +15,7 @@ func _ready() -> void:
 	GameManager.origin_node = self
 	GameManager.level_up_stats_ui = level_up_stats_ui
 	GameManager.game_over_ui = game_over_ui
+	GameManager.stats_panel_ui = stats_panel_ui
 	
 	var player = player_scene.instantiate()
 	var camera : Node3D = camera_scene.instantiate()
@@ -21,6 +23,7 @@ func _ready() -> void:
 	var world_tiles_generator : Node3D = world_tiles_generator_scene.instantiate()
 	
 	GameManager.player = player
+	GameManager.stats_panel_ui.init()
 	
 	add_child(player)
 	add_child(camera)

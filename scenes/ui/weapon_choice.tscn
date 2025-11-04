@@ -80,6 +80,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SniperLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 640.0
 offset_top = 160.0
 offset_right = 768.0
@@ -90,6 +91,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ShotgunLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 896.0
 offset_top = 160.0
 offset_right = 1024.0
@@ -100,6 +102,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RifleLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 384.0
 offset_top = 160.0
 offset_right = 512.0
@@ -118,7 +121,7 @@ offset_bottom = 480.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
-text = "Choose"
+text = "CHOOSE"
 
 [node name="PistolButton" type="Button" parent="."]
 layout_mode = 0
@@ -129,7 +132,8 @@ offset_bottom = 480.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
-text = "Choose"
+text = "CHOOSE
+"
 
 [node name="ShotgunButton" type="Button" parent="."]
 layout_mode = 0
@@ -140,7 +144,7 @@ offset_bottom = 480.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
-text = "Choose"
+text = "CHOOSE"
 
 [node name="SniperButton" type="Button" parent="."]
 layout_mode = 0
@@ -151,4 +155,4 @@ offset_bottom = 480.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_jl0s8")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wmu4h")
-text = "Choose"
+text = "CHOOSE"

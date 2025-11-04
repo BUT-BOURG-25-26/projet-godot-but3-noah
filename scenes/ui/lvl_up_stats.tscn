@@ -1,4 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsm2mrw0ekl4c"]
+[gd_scene load_steps=8 format=3 uid="uid://bsm2mrw0ekl4c"]
+
+[ext_resource type="Script" uid="uid://q6smbchfv8ra" path="res://scripts/ui/lvl_up_stats.gd" id="1_r0mmd"]
+[ext_resource type="PackedScene" uid="uid://dw8crvoie44c7" path="res://scenes/ui/lvl_up_cards/lvl_up_card_common.tscn" id="2_0cc8q"]
+[ext_resource type="PackedScene" uid="uid://dq6hkegpdigal" path="res://scenes/ui/lvl_up_cards/lvl_up_card_uncommon.tscn" id="3_aqyqu"]
+[ext_resource type="PackedScene" uid="uid://dy81maxwou3g3" path="res://scenes/ui/lvl_up_cards/lvl_up_card_rare.tscn" id="4_qjxq8"]
+[ext_resource type="PackedScene" uid="uid://dr7a6an1d71d0" path="res://scenes/ui/lvl_up_cards/lvl_up_card_epic.tscn" id="5_wxxew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcygm"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 1)
@@ -13,16 +19,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r0mmd")
+common_card_scene = ExtResource("2_0cc8q")
+uncommon_card_scene = ExtResource("3_aqyqu")
+rare_card_scene = ExtResource("4_qjxq8")
+epic_card_scene = ExtResource("5_wxxew")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.329412, 0.329412, 0.329412, 0.580392)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -252.0
-offset_top = 64.0
-offset_right = 252.0
-offset_bottom = 131.0
+offset_left = -274.0
+offset_top = 48.0
+offset_right = 274.0
+offset_bottom = 146.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_jcygm")
 text = "YOU HAVE LEVEL UP !!"
