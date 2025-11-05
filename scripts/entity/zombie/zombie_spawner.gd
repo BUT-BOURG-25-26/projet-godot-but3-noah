@@ -14,6 +14,7 @@ func _on_timer_timeout() -> void:
 	var zombie: Zombie = zombie_scene.instantiate()
 	add_child(zombie)
 	GameManager.enemies_alive+=1
+	GameManager.score_ui.update()
 	var spawn_vector = zombie_spawn_range()
 	zombie.global_position = spawn_vector
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bsm2mrw0ekl4c"]
 
-[ext_resource type="Script" uid="uid://q6smbchfv8ra" path="res://scripts/ui/lvl_up_stats.gd" id="1_r0mmd"]
-[ext_resource type="PackedScene" uid="uid://dw8crvoie44c7" path="res://scenes/ui/lvl_up_cards/lvl_up_card_common.tscn" id="2_0cc8q"]
-[ext_resource type="PackedScene" uid="uid://dq6hkegpdigal" path="res://scenes/ui/lvl_up_cards/lvl_up_card_uncommon.tscn" id="3_aqyqu"]
-[ext_resource type="PackedScene" uid="uid://dy81maxwou3g3" path="res://scenes/ui/lvl_up_cards/lvl_up_card_rare.tscn" id="4_qjxq8"]
-[ext_resource type="PackedScene" uid="uid://dr7a6an1d71d0" path="res://scenes/ui/lvl_up_cards/lvl_up_card_epic.tscn" id="5_wxxew"]
+[ext_resource type="Script" uid="uid://q6smbchfv8ra" path="res://scripts/ui/game_management/lvl_up_stats.gd" id="1_r0mmd"]
+[ext_resource type="PackedScene" uid="uid://dw8crvoie44c7" path="res://scenes/ui/game_management/lvl_up_cards/lvl_up_card_common.tscn" id="2_0cc8q"]
+[ext_resource type="PackedScene" uid="uid://dq6hkegpdigal" path="res://scenes/ui/game_management/lvl_up_cards/lvl_up_card_uncommon.tscn" id="3_aqyqu"]
+[ext_resource type="PackedScene" uid="uid://dy81maxwou3g3" path="res://scenes/ui/game_management/lvl_up_cards/lvl_up_card_rare.tscn" id="4_qjxq8"]
+[ext_resource type="PackedScene" uid="uid://dr7a6an1d71d0" path="res://scenes/ui/game_management/lvl_up_cards/lvl_up_card_epic.tscn" id="5_wxxew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcygm"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 1)

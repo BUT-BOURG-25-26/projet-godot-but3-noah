@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://yifcusm43fkf"]
 
-[ext_resource type="Script" uid="uid://dcor1m6661gjm" path="res://scripts/ui/weapon_choice.gd" id="1_erh4f"]
+[ext_resource type="Script" uid="uid://dcor1m6661gjm" path="res://scripts/ui/game_management/weapon_choice.gd" id="1_erh4f"]
 [ext_resource type="Texture2D" uid="uid://c17k21gp1y1h7" path="res://assets/kenney_blaster-kit_2.1/Previews/blaster-b.png" id="1_yfy40"]
 [ext_resource type="Texture2D" uid="uid://nt81uuhjj7gp" path="res://assets/kenney_blaster-kit_2.1/Previews/blaster-d.png" id="2_6ovft"]
 [ext_resource type="PackedScene" uid="uid://bntjft3udvr88" path="res://scenes/armes/pistol/pistol.tscn" id="2_wmu4h"]

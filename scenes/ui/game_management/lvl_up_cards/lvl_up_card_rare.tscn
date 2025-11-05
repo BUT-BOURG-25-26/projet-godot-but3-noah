@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dy81maxwou3g3"]
 
-[ext_resource type="Script" uid="uid://ba4tdefbne0ns" path="res://scripts/ui/lvl_up_cards/lvl_up_card_rare.gd" id="1_y8mf8"]
+[ext_resource type="Script" uid="uid://ba4tdefbne0ns" path="res://scripts/ui/game_management/lvl_up_cards/lvl_up_card_rare.gd" id="1_y8mf8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibbg6"]
 bg_color = Color(0.306922, 0.306923, 0.306923, 1)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Moteur3D-Projet-Template"
-run/main_scene="uid://yifcusm43fkf"
+run/main_scene="uid://d2sw7r8kda5eu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -55,3 +55,4 @@ left_mouse_click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

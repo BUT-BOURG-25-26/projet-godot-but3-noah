@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://ijt3x48qbcmc"]
+[gd_scene load_steps=13 format=3 uid="uid://ijt3x48qbcmc"]
 
 [ext_resource type="Script" uid="uid://r2my3a5n4e4v" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://dj7so6rtr0m71" path="res://scenes/entity/player/player.tscn" id="3_pu3yx"]
 [ext_resource type="PackedScene" uid="uid://da2wsgwx4bbtj" path="res://scenes/entity/camera.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://bkq3ont8slvcc" path="res://scenes/entity/zombie/zombie_spawner.tscn" id="4_pu3yx"]
 [ext_resource type="PackedScene" uid="uid://rlx7vkltgig6" path="res://scenes/world_gen/world_tiles_generator.tscn" id="5_gubc5"]
-[ext_resource type="PackedScene" uid="uid://bsm2mrw0ekl4c" path="res://scenes/ui/lvl_up_stats.tscn" id="6_rt2n2"]
-[ext_resource type="PackedScene" uid="uid://dmaba7mmjn8rn" path="res://scenes/ui/game_over.tscn" id="7_c16ls"]
-[ext_resource type="PackedScene" uid="uid://cwq6gctecnsh7" path="res://scenes/ui/lvl_up_cards/stats_panel.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" uid="uid://bsm2mrw0ekl4c" path="res://scenes/ui/game_management/lvl_up_stats.tscn" id="6_rt2n2"]
+[ext_resource type="PackedScene" uid="uid://dmaba7mmjn8rn" path="res://scenes/ui/game_management/game_over.tscn" id="7_c16ls"]
+[ext_resource type="PackedScene" uid="uid://cwq6gctecnsh7" path="res://scenes/ui/stats_panel.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" uid="uid://b08ubtmtep5ie" path="res://scenes/ui/score_ui.tscn" id="9_c1pb6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2twt"]
 
@@ -31,12 +32,6 @@ environment = SubResource("Environment_w2twt")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 
-[node name="LvlUpStats" parent="." instance=ExtResource("6_rt2n2")]
-visible = false
-
-[node name="GameOver" parent="." instance=ExtResource("7_c16ls")]
-visible = false
-
 [node name="StatsPanel" parent="." instance=ExtResource("8_18nlu")]
 anchors_preset = 1
 anchor_left = 1.0
@@ -46,3 +41,16 @@ offset_right = -196.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 1
+
+[node name="ScoreUi" parent="." instance=ExtResource("9_c1pb6")]
+
+[node name="LvlUpStats" parent="." instance=ExtResource("6_rt2n2")]
+visible = false
+
+[node name="GameOver" parent="." instance=ExtResource("7_c16ls")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

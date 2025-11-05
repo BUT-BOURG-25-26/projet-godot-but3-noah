@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw8crvoie44c7"]
+[gd_scene load_steps=9 format=3 uid="uid://dr7a6an1d71d0"]
 
-[ext_resource type="Script" uid="uid://cojh4uaqevuqp" path="res://scripts/ui/lvl_up_cards/lvl_up_card_common.gd" id="1_u11bw"]
+[ext_resource type="Script" uid="uid://dkql5nrea4wmb" path="res://scripts/ui/game_management/lvl_up_cards/lvl_up_card_epic.gd" id="1_axfrh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibbg6"]
 bg_color = Color(0.306922, 0.306923, 0.306923, 1)
@@ -42,13 +42,13 @@ offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(124, 210.5)
-script = ExtResource("1_u11bw")
+script = ExtResource("1_axfrh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 248.0
 offset_bottom = 421.0
-color = Color(0.180005, 0.180005, 0.180005, 1)
+color = Color(0.272492, 0.0679916, 0.326531, 1)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

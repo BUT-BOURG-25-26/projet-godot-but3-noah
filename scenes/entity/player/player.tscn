@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dj7so6rtr0m71"]
 
 [ext_resource type="Script" uid="uid://c866pxi7a1mlb" path="res://scripts/entity/player/player.gd" id="1_eefhw"]
-[ext_resource type="PackedScene" uid="uid://ddo47f38ulwyw" path="res://scenes/ui/joystick.tscn" id="2_4fs46"]
+[ext_resource type="PackedScene" uid="uid://ddo47f38ulwyw" path="res://scenes/ui/game_management/joystick.tscn" id="2_4fs46"]
 [ext_resource type="PackedScene" uid="uid://ce4icd657abht" path="res://scenes/entity_character/player/player_character.tscn" id="3_eefhw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqvra"]

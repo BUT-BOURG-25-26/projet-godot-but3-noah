@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 			power_up_appears()
 			GameManager.kill_count+=1
 			GameManager.enemies_alive-=1
+			GameManager.score_ui.update()
 			animation_tree.set("parameters/conditions/isDying", true)
 
 func _on_tree_exiting() -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddo47f38ulwyw"]
 
-[ext_resource type="Script" uid="uid://bjuehg7w0pst4" path="res://scripts/ui/joystick.gd" id="1_rnagb"]
+[ext_resource type="Script" uid="uid://bjuehg7w0pst4" path="res://scripts/ui/game_management/joystick.gd" id="1_rnagb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccjgu"]
 radius = 50.0

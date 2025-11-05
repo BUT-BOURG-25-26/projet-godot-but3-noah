@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmaba7mmjn8rn"]
+[gd_scene load_steps=4 format=3 uid="uid://dmaba7mmjn8rn"]
 
-[ext_resource type="Script" uid="uid://dp7q3ew3vasp0" path="res://scripts/ui/game_over.gd" id="1_60xr3"]
+[ext_resource type="Script" uid="uid://dp7q3ew3vasp0" path="res://scripts/ui/game_management/game_over.gd" id="1_60xr3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gtk8t"]
 font_size = 62
+
+[sub_resource type="LabelSettings" id="LabelSettings_os3na"]
+font_size = 22
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -35,9 +38,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -96.0
+offset_top = -24.0
 offset_right = 128.0
-offset_bottom = -32.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
@@ -51,10 +54,28 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = 32.0
+offset_top = 72.0
 offset_right = 128.0
-offset_bottom = 96.0
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
-text = "QUIT"
+text = "MAIN MENU"
+
+[node name="time_survived" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -104.0
+offset_right = 128.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You survived : ? seconds"
+label_settings = SubResource("LabelSettings_os3na")
+horizontal_alignment = 1
+vertical_alignment = 1
