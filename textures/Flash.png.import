@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://4dct7mmsym15"
 path.s3tc="res://.godot/imported/Flash.png-d3a7355e16414d089174f552856aa9b4.s3tc.ctex"
+path.etc2="res://.godot/imported/Flash.png-d3a7355e16414d089174f552856aa9b4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/Flash.png"
-dest_files=["res://.godot/imported/Flash.png-d3a7355e16414d089174f552856aa9b4.s3tc.ctex"]
+dest_files=["res://.godot/imported/Flash.png-d3a7355e16414d089174f552856aa9b4.s3tc.ctex", "res://.godot/imported/Flash.png-d3a7355e16414d089174f552856aa9b4.etc2.ctex"]
 
 [params]
 
