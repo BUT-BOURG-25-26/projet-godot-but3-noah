@@ -13,6 +13,8 @@ var origin_node : Node3D
 var player : Player
 var weapon : Weapon
 
+var screensize : Vector2
+
 var enemies_alive : int
 var kill_count : int
 var time_played : int

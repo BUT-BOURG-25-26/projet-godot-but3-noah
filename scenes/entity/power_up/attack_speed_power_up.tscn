@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci8q44rood7u"]
+[gd_scene load_steps=9 format=3 uid="uid://ci8q44rood7u"]
 
 [ext_resource type="Script" uid="uid://drnl3iloqkqfy" path="res://scripts/entity/power_up/attack_speed_power_up.gd" id="1_b8qkm"]
 [ext_resource type="PackedScene" uid="uid://brx30rcknya6c" path="res://scenes/vfx/power_up_vfx.tscn" id="2_tp32d"]
@@ -19,6 +19,17 @@ radius = 0.4
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ldge"]
 radius = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffxs0"]
+transparency = 1
+cull_mode = 2
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_tp32d"]
+material = SubResource("StandardMaterial3D_ffxs0")
+radius = 0.04
+height = 0.08
+
 [node name="AttackSpeedPowerUp" type="StaticBody3D"]
 collision_layer = 0
 collision_mask = 0
@@ -36,6 +47,7 @@ shape = SubResource("SphereShape3D_tp32d")
 shape = SubResource("SphereShape3D_8ldge")
 
 [node name="PowerUpAttackSpeedVfx" parent="." instance=ExtResource("2_tp32d")]
+draw_pass_1 = SubResource("SphereMesh_tp32d")
 
 [connection signal="tree_entered" from="MeshInstance3D" to="." method="_on_mesh_instance_3d_tree_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

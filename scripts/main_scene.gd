@@ -38,6 +38,9 @@ func _ready() -> void:
 	world_tiles_generator.global_position = Vector3(0, 0, 0)
 	
 	camera.rotate(Vector3(1, 0, 0), -0.26)
+	
+	GameManager.screensize = get_viewport().size
+	print(GameManager.screensize)
 
 func _on_timer_timeout() -> void:
 	GameManager.time_played+=1

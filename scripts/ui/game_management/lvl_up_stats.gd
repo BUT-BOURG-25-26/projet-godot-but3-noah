@@ -33,5 +33,7 @@ func cards_roll() -> void:
 			5:
 				card.type = "health"
 		add_child(card)
-		card.position = Vector2((i+1)*102+i*248, 178)
+		print("Screen : ", GameManager.screensize.x, " Card : ", card.size.x, " Espace : ", (GameManager.screensize.x-3*card.size.x)/4)
+		var espace = (GameManager.screensize.x-3*card.size.x)/4
+		card.position = Vector2((i+1)*espace+i*card.size.x, 228)
 	

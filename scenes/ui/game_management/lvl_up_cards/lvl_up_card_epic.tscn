@@ -34,20 +34,23 @@ font = SubResource("SystemFont_837oq")
 
 [node name="LvlUpCard" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -904.0
-offset_bottom = -227.0
+anchor_right = 0.215
+anchor_bottom = 0.65
+offset_right = 0.319992
+offset_bottom = -0.200012
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(124, 210.5)
+size_flags_horizontal = 4
 script = ExtResource("1_axfrh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 248.0
-offset_bottom = 421.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.272492, 0.0679916, 0.326531, 1)
 
 [node name="Button" type="Button" parent="."]
