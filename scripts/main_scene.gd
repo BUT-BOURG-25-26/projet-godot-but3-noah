@@ -11,6 +11,7 @@ extends Node3D
 @export var world_tiles_generator_scene : PackedScene
 
 var player : Player
+var zombie_spawner : ZombieSpawner
 
 func _ready() -> void:
 	GameManager.origin_node = self
@@ -21,7 +22,7 @@ func _ready() -> void:
 	
 	var player = player_scene.instantiate()
 	var camera : Node3D = camera_scene.instantiate()
-	var zombie_spawner : Node3D = zombie_spawner_scene.instantiate()
+	zombie_spawner = zombie_spawner_scene.instantiate()
 	var world_tiles_generator : Node3D = world_tiles_generator_scene.instantiate()
 	
 	GameManager.player = player
@@ -40,8 +41,8 @@ func _ready() -> void:
 	camera.rotate(Vector3(1, 0, 0), -0.26)
 	
 	GameManager.screensize = get_viewport().size
-	print(GameManager.screensize)
 
 func _on_timer_timeout() -> void:
 	GameManager.time_played+=1
-	print(GameManager.time_played)
+	zombie_spawner.change_spawn_time(zombie_spawner.spawn_time-0.005)
+	print(zombie_spawner.spawn_time)

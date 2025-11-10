@@ -9,17 +9,16 @@ class_name LevelUpStats
 
 func cards_roll() -> void:
 	for i in range(3):
-		var luck : int = int(randf_range(1, 5))
+		var luck : int = int(randf_range(1, 101))
 		var card : LvlUpCard
-		match luck:
-			1:
-				card = common_card_scene.instantiate()
-			2:
-				card = uncommon_card_scene.instantiate()
-			3:
-				card = rare_card_scene.instantiate()
-			4:
-				card = epic_card_scene.instantiate()
+		if luck>0 && luck<=40:
+			card = common_card_scene.instantiate()
+		if luck>40 && luck<=70:
+			card = uncommon_card_scene.instantiate()
+		if luck>70 && luck<=90:
+			card = rare_card_scene.instantiate()
+		if luck>90 && luck<=100:
+			card = epic_card_scene.instantiate()
 		luck = int(randf_range(1, 6))
 		match luck:
 			1:
@@ -33,7 +32,6 @@ func cards_roll() -> void:
 			5:
 				card.type = "health"
 		add_child(card)
-		print("Screen : ", GameManager.screensize.x, " Card : ", card.size.x, " Espace : ", (GameManager.screensize.x-3*card.size.x)/4)
 		var espace = (GameManager.screensize.x-3*card.size.x)/4
 		card.position = Vector2((i+1)*espace+i*card.size.x, 228)
 	

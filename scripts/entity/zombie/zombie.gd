@@ -28,16 +28,16 @@ func _physics_process(delta: float) -> void:
 		zombie_movement()
 		if health<=0:
 			is_dead = true
-			power_up_appears()
-			GameManager.kill_count+=1
-			GameManager.enemies_alive-=1
-			GameManager.score_ui.update()
 			animation_tree.set("parameters/conditions/isDying", true)
 
 func _on_tree_exiting() -> void:
 	var zombie_xp : Node3D = zombie_xp_scene.instantiate()
 	GameManager.origin_node.add_child(zombie_xp)
 	zombie_xp.global_position = Vector3(global_position.x, 0.5, global_position.z)
+	power_up_appears()
+	GameManager.kill_count+=1
+	GameManager.enemies_alive-=1
+	GameManager.score_ui.update()
 
 func zombie_movement() -> void:
 	var look_at_player : Vector3 = player.global_position
@@ -60,15 +60,15 @@ func zombie_movement() -> void:
 	move_and_slide()
 
 func power_up_appears() -> void:
-	var luck : int = int(randf_range(0, 10))
+	var luck : int = int(randf_range(1, 101))
 	var power_up : StaticBody3D
-	if luck == 5:
+	if luck == 20:
 		power_up = xp_power_up_scene.instantiate()
-	if luck == 8:
+	if luck == 40:
 		power_up = damage_power_up_scene.instantiate()
-	if luck == 3:
+	if luck == 60:
 		power_up = attack_speed_power_up_scene.instantiate()
-	if luck == 1:
+	if luck == 80:
 		power_up = speed_power_up_scene.instantiate()
 	if power_up!=null:
 		GameManager.origin_node.add_child(power_up)

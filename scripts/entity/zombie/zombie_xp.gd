@@ -4,7 +4,7 @@ extends StaticBody3D
 @export var go_to_player : bool = false
 
 func _ready() -> void:
-	xp_amount = 100
+	xp_amount = 20
 
 func _physics_process(delta: float) -> void:
 	if GameManager.player.attract_xp_orbs:

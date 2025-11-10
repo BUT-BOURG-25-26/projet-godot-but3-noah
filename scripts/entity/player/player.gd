@@ -51,7 +51,7 @@ func _ready() -> void:
 	movement_speed = 7
 	range = GameManager.weapon.range
 	xp = 0
-	level_xp_amount = 100
+	level_xp_amount = 50
 	level = 1
 	
 	range_area = area.shape
@@ -143,7 +143,7 @@ func gain_xp(xp_amount) -> void:
 func level_up() -> void:
 	if xp >= level_xp_amount:
 		level+=1
-		level_xp_amount = level_xp_amount*2
+		level_xp_amount = level_xp_amount+level*100
 		xp = 0
 		GameManager.stats_panel_ui.update()
 		GameManager.level_up_stats()

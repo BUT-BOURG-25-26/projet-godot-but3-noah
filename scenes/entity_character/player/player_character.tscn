@@ -289,19 +289,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 2.18378e-14)
 
 [node name="torso" parent="character-m/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, -0.000246456, 0, 0.000246456, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999601, 0.0282313, 0, -0.0282313, 0.999601, 0, 0.7, 0)
 
 [node name="arm-left" parent="character-m/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, -0.000382875, 0, 0.000382875, 0.999999, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.996414, 0.0846038, 0, -0.0846038, 0.996414, 0.4, 1.1, -0.0999999)
 
 [node name="arm-right" parent="character-m/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, -0.000382875, 0, 0.000382875, 1, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.996415, 0.0846039, 0, -0.0846039, 0.996415, -0.4, 1.1, -0.0999999)
 
 [node name="weapon_socket" type="Marker3D" parent="character-m/root/torso/arm-right" index="0"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.47035e-08, 1, 8.74228e-08, 1, 4.47035e-08, -0.2, -1.0181, 0.0790439)
 
 [node name="head" parent="character-m/root/torso" index="2"]
-transform = Transform3D(0.1, 0, -3.82875e-05, 0, 0.1, 0, 3.82875e-05, 0, 0.1, 0, 1.2, 0)
+transform = Transform3D(0.0996415, 0, 0.00846039, 0, 0.1, 0, -0.00846039, 0, 0.0996415, 0, 1.2, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_2cadi")

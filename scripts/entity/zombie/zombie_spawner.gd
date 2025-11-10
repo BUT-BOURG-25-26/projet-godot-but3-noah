@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name ZombieSpawner
+
 @onready var timer : Timer = $Timer
 @export var zombie_scene : PackedScene
 @export var min_distance_player = 5.0
@@ -7,7 +9,7 @@ extends Node3D
 @export var spawn_time : float
 
 func _ready() -> void:
-	spawn_time = 0.75
+	spawn_time = 1
 	timer.wait_time = spawn_time
 
 func _on_timer_timeout() -> void:
@@ -17,6 +19,10 @@ func _on_timer_timeout() -> void:
 	GameManager.score_ui.update()
 	var spawn_vector = zombie_spawn_range()
 	zombie.global_position = spawn_vector
+
+func change_spawn_time(new_spawn_time) -> void:
+	spawn_time = new_spawn_time
+	timer.wait_time = spawn_time
 
 func zombie_spawn_range() -> Vector3:
 	var spawn_vector: Vector3 = Vector3.ZERO
