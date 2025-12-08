@@ -45,4 +45,3 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	GameManager.time_played+=1
 	zombie_spawner.change_spawn_time(zombie_spawner.spawn_time-0.005)
-	print(zombie_spawner.spawn_time)

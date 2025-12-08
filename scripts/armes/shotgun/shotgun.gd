@@ -20,7 +20,7 @@ func shoot() -> void:
 	shoot_vfx.global_position = output.global_position
 	
 	for i in range(6):
-		var bullet : Node3D = bullet_scene.instantiate()
+		var bullet : Bullet = bullet_scene.instantiate()
 		bullet.target = player.nearest_enemy.global_position
 		bullet.pos = output.global_position
 		bullet.angle_x = randf_range(-20, 20)
