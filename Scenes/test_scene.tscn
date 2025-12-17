@@ -1,0 +1,36 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs6x8rkb3vob"]
+
+[ext_resource type="Script" uid="uid://dbt70mx13vmvw" path="res://Scripts/test_scene.gd" id="1_50ct6"]
+[ext_resource type="PackedScene" uid="uid://yhgdkf382kyd" path="res://Scenes/Entities/Player/player.tscn" id="2_r5l72"]
+[ext_resource type="PackedScene" uid="uid://d3btayj38g7lf" path="res://Scenes/Entities/Monsters/Spawners/base_glub_spawner.tscn" id="3_ak5v8"]
+[ext_resource type="PackedScene" uid="uid://cjt5stunsk46j" path="res://Scenes/Entities/Monsters/Spawners/base_mushroom_spawner.tscn" id="3_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://cx1de7w36qmt8" path="res://Scenes/WorldGeneration/world_generator.tscn" id="4_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://bryw66u65160x" path="res://Scenes/UI/Game/xpbar.tscn" id="7_rdbpf"]
+[ext_resource type="PackedScene" uid="uid://cchkwteosg6bu" path="res://Scenes/UI/Game/LevelUpUI/level_up.tscn" id="8_oho3u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
+
+[sub_resource type="Sky" id="Sky_r5l72"]
+sky_material = SubResource("ProceduralSkyMaterial_3dogw")
+
+[sub_resource type="Environment" id="Environment_50ct6"]
+background_mode = 2
+sky = SubResource("Sky_r5l72")
+tonemap_mode = 2
+
+[node name="TestScene" type="Node3D"]
+script = ExtResource("1_50ct6")
+player_scene = ExtResource("2_r5l72")
+world_generator_scene = ExtResource("4_hb2xm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_50ct6")
+
+[node name="BaseGlubSpawner" parent="." instance=ExtResource("3_ak5v8")]
+
+[node name="BaseMushroomSpawner" parent="." instance=ExtResource("3_hb2xm")]
+
+[node name="Xpbar" parent="." instance=ExtResource("7_rdbpf")]
+
+[node name="LevelUp" parent="." instance=ExtResource("8_oho3u")]
+visible = false

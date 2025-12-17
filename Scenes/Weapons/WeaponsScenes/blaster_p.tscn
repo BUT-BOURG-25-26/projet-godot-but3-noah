@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgwfcvf88x6mh"]
+
+[ext_resource type="PackedScene" uid="uid://c772mtvcmx2o5" path="res://Assets/kenney_blaster-kit_2.1/Models/FBX format/blaster-p.fbx" id="1_803qw"]
+[ext_resource type="Script" uid="uid://bcsyli8ueni8h" path="res://Scripts/Weapons/WeaponsScenes/blaster_p.gd" id="2_c7b2j"]
+
+[node name="blaster-p" instance=ExtResource("1_803qw")]
+script = ExtResource("2_c7b2j")
+
+[node name="blaster-p" parent="." index="0"]
+transform = Transform3D(-2, 3.01992e-07, 1.32005e-14, 0, -8.74228e-08, 2, 3.01992e-07, 2, 8.74228e-08, 0, -0.279152, -0.0446972)
+
+[node name="output1" type="Marker3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.14466, 0.0745375)
+
+[node name="output2" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000834912, -1.14563, -0.0453281)

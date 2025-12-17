@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://bryw66u65160x"]
+
+[ext_resource type="Script" uid="uid://ckkk6571g1xdv" path="res://Scripts/UI/Player/xpbar.gd" id="1_qoxxu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msn1n"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoxxu"]
+bg_color = Color(0.276056, 0.625632, 0.913466, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Xpbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qoxxu")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 48.0
+grow_horizontal = 2
+pivot_offset = Vector2(128, 16)
+theme_override_styles/background = SubResource("StyleBoxFlat_msn1n")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qoxxu")
+value = 50.0
+show_percentage = false

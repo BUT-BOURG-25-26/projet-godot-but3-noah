@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxenlvd3tgj4v"]
+
+[ext_resource type="PackedScene" uid="uid://cwdbxhrx5xnib" path="res://Assets/kenney_tower-defense-kit/Models/FBX format/snow-tile.fbx" id="1_2ki1a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ggty"]
+size = Vector3(1, 0.2, 1)
+
+[node name="snow-tile" instance=ExtResource("1_2ki1a")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_4ggty")

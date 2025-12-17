@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8jcyvfmcjajm"]
+
+[ext_resource type="PackedScene" uid="uid://btt0e05bls0wv" path="res://Assets/Ultimate Monsters Bundle-zip/Mushnub Evolved/Mushnub_Evolved.fbx" id="1_5y5k5"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jgwbm"]
+animation = &"CharacterArmature|Dance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w0hrr"]
+animation = &"CharacterArmature|Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uo1ae"]
+animation = &"CharacterArmature|Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_keikp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sxh24"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l5202"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDancing"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_iwptt"]
+states/CharacterArmature|Dance/node = SubResource("AnimationNodeAnimation_jgwbm")
+states/CharacterArmature|Dance/position = Vector2(645, 140)
+states/CharacterArmature|Death/node = SubResource("AnimationNodeAnimation_w0hrr")
+states/CharacterArmature|Death/position = Vector2(645, 70)
+states/CharacterArmature|Walk/node = SubResource("AnimationNodeAnimation_uo1ae")
+states/CharacterArmature|Walk/position = Vector2(382, 100)
+transitions = ["Start", "CharacterArmature|Walk", SubResource("AnimationNodeStateMachineTransition_keikp"), "CharacterArmature|Walk", "CharacterArmature|Death", SubResource("AnimationNodeStateMachineTransition_sxh24"), "CharacterArmature|Walk", "CharacterArmature|Dance", SubResource("AnimationNodeStateMachineTransition_l5202")]
+
+[node name="Mushnub_Evolved" instance=ExtResource("1_5y5k5")]
+
+[node name="Skeleton3D" parent="CharacterArmature" index="0"]
+bones/0/position = Vector3(0, 0.00237024, 0.000482927)
+bones/0/rotation = Quaternion(0.750862, 0, 0, 0.660459)
+bones/2/position = Vector3(0, 0, 0.0114413)
+bones/2/rotation = Quaternion(0.726834, 0, 0, 0.686813)
+bones/4/rotation = Quaternion(0.0224467, 0, 0, 0.999748)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_iwptt")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDancing = false
+parameters/conditions/isDying = false

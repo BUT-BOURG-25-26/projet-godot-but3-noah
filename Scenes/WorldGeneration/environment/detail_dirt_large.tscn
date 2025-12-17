@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://km32gbg65tqy"]
+
+[ext_resource type="PackedScene" uid="uid://b7fqjunk2pki8" path="res://Assets/kenney_tower-defense-kit/Models/FBX format/detail-dirt-large.fbx" id="1_wd7wd"]
+
+[node name="detail-dirt-large" instance=ExtResource("1_wd7wd")]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://0vyegar0sate"]
+
+[ext_resource type="PackedScene" uid="uid://wfuymnquf6qq" path="res://Assets/Water Bottle/WaterBottle_3.fbx" id="1_rs6xt"]
+[ext_resource type="Script" uid="uid://dlg4kwmwpmt44" path="res://Scripts/PowerUps/power_up.gd" id="2_5slk2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5slk2"]
+radius = 0.67712
+height = 2.20653
+
+[node name="WaterBottle_3" instance=ExtResource("1_rs6xt")]
+script = ExtResource("2_5slk2")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628569, 0)
+shape = SubResource("CapsuleShape3D_5slk2")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

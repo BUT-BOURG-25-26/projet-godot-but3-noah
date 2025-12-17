@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo2w26vqnth80"]
+
+[ext_resource type="Script" uid="uid://d0mivjjeu8o3u" path="res://Scripts/UI/Game/WeaponsUI/weapon_slots_choice.gd" id="1_kcspr"]
+[ext_resource type="PackedScene" uid="uid://chvnnfec7v6kg" path="res://Scenes/Weapons/weapons_list.tscn" id="2_6h7ff"]
+[ext_resource type="PackedScene" uid="uid://bjegpqxunkcxq" path="res://Scenes/UI/Game/WeaponsUI/weapon_slot.tscn" id="3_dr4vm"]
+
+[node name="WeaponSlotsChoice" type="Node3D"]
+script = ExtResource("1_kcspr")
+weapons_list_scene = ExtResource("2_6h7ff")
+weapon_slot_scene = ExtResource("3_dr4vm")

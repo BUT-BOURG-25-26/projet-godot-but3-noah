@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjegpqxunkcxq"]
+
+[ext_resource type="Script" uid="uid://cwsyfjla54kmg" path="res://Scripts/UI/Game/WeaponsUI/weapon_slot.gd" id="1_1oc7f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wj8u8"]
+size = Vector3(2, 4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1oc7f"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bj5co"]
+material = SubResource("StandardMaterial3D_1oc7f")
+size = Vector3(2, 4, 2)
+
+[node name="WeaponSlot" type="Node3D"]
+script = ExtResource("1_1oc7f")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_wj8u8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_bj5co")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

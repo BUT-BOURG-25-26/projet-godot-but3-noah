@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://dd5k4bic627ue"]
+
+[ext_resource type="PackedScene" uid="uid://d3lvam84vbj8k" path="res://Assets/Ultimate Monsters Bundle-zip/Mushnub/Mushnub.fbx" id="1_nwlc4"]
+[ext_resource type="Script" uid="uid://c4co5p8g6jyr3" path="res://Scripts/Entities/Monsters/MonstersCharacters/base_mushroom_character.gd" id="2_55dk2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wh8hf"]
+animation = &"CharacterArmature|Dance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j1cfw"]
+animation = &"CharacterArmature|Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4b3n2"]
+animation = &"CharacterArmature|Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ciiy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fbaii"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_61din"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDancing"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xcdo8"]
+states/CharacterArmature|Dance/node = SubResource("AnimationNodeAnimation_wh8hf")
+states/CharacterArmature|Dance/position = Vector2(635, 139)
+states/CharacterArmature|Death/node = SubResource("AnimationNodeAnimation_j1cfw")
+states/CharacterArmature|Death/position = Vector2(635, 77)
+states/CharacterArmature|Walk/node = SubResource("AnimationNodeAnimation_4b3n2")
+states/CharacterArmature|Walk/position = Vector2(373, 100)
+transitions = ["Start", "CharacterArmature|Walk", SubResource("AnimationNodeStateMachineTransition_8ciiy"), "CharacterArmature|Walk", "CharacterArmature|Death", SubResource("AnimationNodeStateMachineTransition_fbaii"), "CharacterArmature|Walk", "CharacterArmature|Dance", SubResource("AnimationNodeStateMachineTransition_61din")]
+
+[node name="Mushnub" instance=ExtResource("1_nwlc4")]
+script = ExtResource("2_55dk2")
+
+[node name="Skeleton3D" parent="CharacterArmature" index="0"]
+bones/0/position = Vector3(0, -0.00120865, 0.00188152)
+bones/0/rotation = Quaternion(0.653505, 0, 0, 0.756922)
+bones/2/position = Vector3(0, 0, 0.00802433)
+bones/2/rotation = Quaternion(0.692368, 0, 0, 0.721544)
+bones/4/rotation = Quaternion(-0.127244, 0, 0, 0.991871)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_xcdo8")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDancing = false
+parameters/conditions/isDying = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6it028v7f2nh"]
+
+[ext_resource type="PackedScene" uid="uid://dxenlvd3tgj4v" path="res://Scenes/WorldGeneration/Tiles/snow/snow_tile.tscn" id="1_3nn3g"]
+
+[node name="SnowTile1" type="Node3D"]
+
+[node name="snow-tile" parent="." instance=ExtResource("1_3nn3g")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
