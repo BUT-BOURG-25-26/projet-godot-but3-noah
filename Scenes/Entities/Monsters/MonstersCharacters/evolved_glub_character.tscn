@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://okqnmny5tej3"]
+
+[ext_resource type="PackedScene" uid="uid://cmpintfc7wk7g" path="res://Assets/Ultimate Monsters Bundle-zip/Glub Evolved/Glub_Evolved.fbx" id="1_4ovem"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ovem"]
+animation = &"CharacterArmature|Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ww8r3"]
+animation = &"CharacterArmature|Fast_Flying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_db2bn"]
+animation = &"CharacterArmature|Flying_Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o7bi7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nbx3p"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isFastFlying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vj7mo"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isFlyingIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1v8ok"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_piqy7"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4ovem"]
+states/CharacterArmature|Death/node = SubResource("AnimationNodeAnimation_4ovem")
+states/CharacterArmature|Death/position = Vector2(650, 100)
+states/CharacterArmature|Fast_Flying/node = SubResource("AnimationNodeAnimation_ww8r3")
+states/CharacterArmature|Fast_Flying/position = Vector2(394, 128)
+states/CharacterArmature|Flying_Idle/node = SubResource("AnimationNodeAnimation_db2bn")
+states/CharacterArmature|Flying_Idle/position = Vector2(394, 70)
+transitions = ["Start", "CharacterArmature|Flying_Idle", SubResource("AnimationNodeStateMachineTransition_o7bi7"), "CharacterArmature|Flying_Idle", "CharacterArmature|Fast_Flying", SubResource("AnimationNodeStateMachineTransition_nbx3p"), "CharacterArmature|Fast_Flying", "CharacterArmature|Flying_Idle", SubResource("AnimationNodeStateMachineTransition_vj7mo"), "CharacterArmature|Flying_Idle", "CharacterArmature|Death", SubResource("AnimationNodeStateMachineTransition_1v8ok"), "CharacterArmature|Fast_Flying", "CharacterArmature|Death", SubResource("AnimationNodeStateMachineTransition_piqy7")]
+
+[node name="Glub_Evolved" instance=ExtResource("1_4ovem")]
+
+[node name="Skeleton3D" parent="CharacterArmature" index="0"]
+bones/1/position = Vector3(3.19718e-05, 0.0143152, -0.00111039)
+bones/1/rotation = Quaternion(-0.0146272, -0.000937792, 0.00328756, 0.999887)
+bones/2/rotation = Quaternion(0.236385, 0.00018451, -0.00341352, 0.971653)
+bones/3/rotation = Quaternion(0.572007, -0.000226341, -0.000157173, 0.820249)
+bones/5/rotation = Quaternion(-0.261081, 0.185941, -0.561208, 0.763091)
+bones/6/rotation = Quaternion(0.0978947, -0.694343, -0.125618, 0.7018)
+bones/7/rotation = Quaternion(0.0725883, -0.00213595, 0.0357301, 0.99672)
+bones/10/rotation = Quaternion(-0.261186, -0.182724, 0.556714, 0.767114)
+bones/11/rotation = Quaternion(0.0978948, 0.694344, 0.125618, 0.7018)
+bones/12/rotation = Quaternion(0.0725883, 0.00213598, -0.0357302, 0.99672)
+bones/15/position = Vector3(3.19718e-05, 0.0143464, -0.0011128)
+bones/15/rotation = Quaternion(0.999617, -0.0126358, -0.00829448, -0.0231703)
+bones/15/scale = Vector3(1, 1, 1.00002)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_4ovem")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDying = false
+parameters/conditions/isFastFlying = false
+parameters/conditions/isFlyingIdle = false

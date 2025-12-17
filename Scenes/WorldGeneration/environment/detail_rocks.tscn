@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cugey8xfgoxg6"]
+
+[ext_resource type="PackedScene" uid="uid://hre6armichms" path="res://Assets/kenney_tower-defense-kit/Models/FBX format/detail-rocks.fbx" id="1_y05dt"]
+
+[node name="detail-rocks" instance=ExtResource("1_y05dt")]

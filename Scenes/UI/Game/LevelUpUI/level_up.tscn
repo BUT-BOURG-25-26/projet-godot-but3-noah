@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cchkwteosg6bu"]
+
+[ext_resource type="Script" uid="uid://cmr0vtkhbma07" path="res://Scripts/UI/Game/LevelUpUI/level_up.gd" id="1_siute"]
+[ext_resource type="PackedScene" uid="uid://80kj1bft3ove" path="res://Scenes/UI/Game/LevelUpUI/level_up_card.tscn" id="2_pkcik"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8i0iv"]
+font_size = 48
+
+[node name="LevelUp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_siute")
+level_up_card_scene = ExtResource("2_pkcik")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.152941, 0.152941, 0.376471)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -263.5
+offset_top = 64.0
+offset_right = 263.5
+offset_bottom = 131.0
+grow_horizontal = 2
+text = "YOU HAVE LEVELED UP"
+label_settings = SubResource("LabelSettings_8i0iv")
+horizontal_alignment = 1
+vertical_alignment = 1

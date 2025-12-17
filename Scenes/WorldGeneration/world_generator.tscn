@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx1de7w36qmt8"]
+
+[ext_resource type="Script" uid="uid://dkdpo0rol2md6" path="res://Scripts/WorldGeneration/world_generator.gd" id="1_chvkj"]
+[ext_resource type="PackedScene" uid="uid://6it028v7f2nh" path="res://Scenes/WorldGeneration/TilesScenes/snow_tile.tscn" id="2_sifme"]
+[ext_resource type="PackedScene" uid="uid://diumypgtsrhan" path="res://Scenes/WorldGeneration/TilesScenes/tile.tscn" id="3_5e5fe"]
+
+[node name="WorldGenerator" type="Node3D"]
+script = ExtResource("1_chvkj")
+snow_tile_scene = ExtResource("2_sifme")
+tile_scene = ExtResource("3_5e5fe")

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cme0rw0upot50"]
+
+[ext_resource type="PackedScene" uid="uid://mflul3f1e42v" path="res://Assets/kenney_tower-defense-kit/Models/FBX format/detail-tree.fbx" id="1_78qgj"]
+
+[node name="detail-tree" instance=ExtResource("1_78qgj")]

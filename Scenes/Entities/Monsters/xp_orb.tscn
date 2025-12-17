@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccvt7yrke00vd"]
+
+[ext_resource type="Script" uid="uid://b8smotnvnf82m" path="res://Scripts/Entities/Monsters/xp_orb.gd" id="1_sgjb1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7fyjg"]
+radius = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgjb1"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 1, 0, 1)
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_06ue6"]
+material = SubResource("StandardMaterial3D_sgjb1")
+radius = 0.4
+height = 0.8
+
+[node name="XpOrb" type="Area3D"]
+script = ExtResource("1_sgjb1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7fyjg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_06ue6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

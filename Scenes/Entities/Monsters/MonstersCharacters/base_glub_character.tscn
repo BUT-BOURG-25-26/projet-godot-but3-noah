@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://dep1aa5ykpuvq"]
+
+[ext_resource type="PackedScene" uid="uid://dcvffuuh7wvfl" path="res://Assets/Ultimate Monsters Bundle-zip/Glub/Glub.fbx" id="1_l8ogu"]
+[ext_resource type="Script" uid="uid://f2gxdhc3wbxv" path="res://Scripts/Entities/Monsters/MonstersCharacters/base_glub_character.gd" id="2_qgnag"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8ogu"]
+animation = &"CharacterArmature|Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ehe3y"]
+animation = &"CharacterArmature|Fast_Flying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_usx21"]
+animation = &"CharacterArmature|Flying_Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jvxva"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8e7b7"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isFastFlying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8eyvr"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isFlyingIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkhyy"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fwd4i"]
+xfade_time = 0.15
+advance_mode = 2
+advance_condition = &"isDying"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l8ogu"]
+states/CharacterArmature|Death/node = SubResource("AnimationNodeAnimation_l8ogu")
+states/CharacterArmature|Death/position = Vector2(711, 100)
+states/CharacterArmature|Fast_Flying/node = SubResource("AnimationNodeAnimation_ehe3y")
+states/CharacterArmature|Fast_Flying/position = Vector2(451, 140)
+states/CharacterArmature|Flying_Idle/node = SubResource("AnimationNodeAnimation_usx21")
+states/CharacterArmature|Flying_Idle/position = Vector2(451, 72)
+states/End/position = Vector2(920, 100)
+transitions = ["Start", "CharacterArmature|Flying_Idle", SubResource("AnimationNodeStateMachineTransition_jvxva"), "CharacterArmature|Flying_Idle", "CharacterArmature|Fast_Flying", SubResource("AnimationNodeStateMachineTransition_8e7b7"), "CharacterArmature|Fast_Flying", "CharacterArmature|Flying_Idle", SubResource("AnimationNodeStateMachineTransition_8eyvr"), "CharacterArmature|Flying_Idle", "CharacterArmature|Death", SubResource("AnimationNodeStateMachineTransition_wkhyy"), "CharacterArmature|Fast_Flying", "CharacterArmature|Death", SubResource("AnimationNodeStateMachineTransition_fwd4i")]
+
+[node name="Glub" instance=ExtResource("1_l8ogu")]
+script = ExtResource("2_qgnag")
+
+[node name="CharacterArmature" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, -2.15803, 0)
+
+[node name="Skeleton3D" parent="CharacterArmature" index="0"]
+bones/1/position = Vector3(3.19718e-05, 0.0143152, -0.00111039)
+bones/1/rotation = Quaternion(-0.0146272, -0.000937792, 0.00328756, 0.999887)
+bones/2/rotation = Quaternion(0.236385, 0.00018451, -0.00341352, 0.971653)
+bones/3/rotation = Quaternion(0.57394, -0.000226147, -0.000157776, 0.818897)
+bones/5/rotation = Quaternion(-0.236204, 0.11885, -0.65981, 0.703373)
+bones/6/rotation = Quaternion(0.0752267, -0.677828, -0.179857, 0.708902)
+bones/7/rotation = Quaternion(0.0329848, -0.000977266, 0.0251303, 0.999139)
+bones/10/rotation = Quaternion(-0.235676, -0.115915, 0.655655, 0.70791)
+bones/11/rotation = Quaternion(0.0752267, 0.677828, 0.179857, 0.708902)
+bones/12/rotation = Quaternion(0.0329847, 0.000977297, -0.0251303, 0.999139)
+bones/15/position = Vector3(3.19718e-05, 0.0143464, -0.0011128)
+bones/15/rotation = Quaternion(0.999617, -0.0126358, -0.00829448, -0.0231703)
+bones/15/scale = Vector3(1, 1, 1.00002)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_l8ogu")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDying = false
+parameters/conditions/isFastFlying = false
+parameters/conditions/isFlyingIdle = false
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="animation_player_changed" from="AnimationTree" to="." method="_on_animation_tree_animation_player_changed"]

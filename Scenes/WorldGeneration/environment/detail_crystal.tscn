@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2nxcqcrmckea"]
+
+[ext_resource type="PackedScene" uid="uid://d4e2r2811wcge" path="res://Assets/kenney_tower-defense-kit/Models/FBX format/detail-crystal.fbx" id="1_db7jn"]
+
+[node name="detail-crystal" instance=ExtResource("1_db7jn")]

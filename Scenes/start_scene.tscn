@@ -1,0 +1,134 @@
+[gd_scene load_steps=19 format=3 uid="uid://bwep0j16q6hfj"]
+
+[ext_resource type="Script" uid="uid://cev6am70cfj7e" path="res://Scripts/start_scene.gd" id="1_tn7b4"]
+[ext_resource type="PackedScene" uid="uid://yhgdkf382kyd" path="res://Scenes/Entities/Player/player.tscn" id="2_xt55t"]
+[ext_resource type="Script" uid="uid://byia02abo8lt1" path="res://Scripts/camera_3d.gd" id="3_0h5c2"]
+[ext_resource type="PackedScene" uid="uid://bo2w26vqnth80" path="res://Scenes/UI/Game/WeaponsUI/weapon_slots_choice.tscn" id="4_cfx51"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r7kuf"]
+
+[sub_resource type="Sky" id="Sky_qgril"]
+sky_material = SubResource("ProceduralSkyMaterial_r7kuf")
+
+[sub_resource type="Environment" id="Environment_r7kuf"]
+background_mode = 2
+sky = SubResource("Sky_qgril")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t06x0"]
+albedo_color = Color(0.505344, 0.505344, 0.505344, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t06x0"]
+material = SubResource("StandardMaterial3D_t06x0")
+size = Vector3(40, 0.2, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7cd7"]
+size = Vector3(40, 0.2, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qgril"]
+size = Vector3(3, 5, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgril"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qgril"]
+material = SubResource("StandardMaterial3D_qgril")
+size = Vector3(3, 5, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qgril"]
+viewport_path = NodePath("quit_area/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgril"]
+font_size = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27gfk"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_27gfk"]
+material = SubResource("StandardMaterial3D_27gfk")
+size = Vector3(3, 5, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_27gfk"]
+viewport_path = NodePath("start_area/SubViewport")
+
+[node name="StartScene" type="Node3D"]
+script = ExtResource("1_tn7b4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r7kuf")
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+mesh = SubResource("BoxMesh_t06x0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("BoxShape3D_l7cd7")
+
+[node name="Player" parent="." instance=ExtResource("2_xt55t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 18)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+script = ExtResource("3_0h5c2")
+offset = Vector3(0, 8, 8)
+player = NodePath("../Player")
+
+[node name="quit_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.5, -18)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="quit_area"]
+shape = SubResource("BoxShape3D_qgril")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="quit_area"]
+mesh = SubResource("BoxMesh_qgril")
+
+[node name="Sprite3D" type="Sprite3D" parent="quit_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26587, 0)
+texture = SubResource("ViewportTexture_qgril")
+
+[node name="SubViewport" type="SubViewport" parent="quit_area"]
+transparent_bg = true
+size = Vector2i(245, 45)
+
+[node name="Label" type="Label" parent="quit_area/SubViewport"]
+offset_right = 123.0
+offset_bottom = 23.0
+text = "QUIT THE GAME"
+label_settings = SubResource("LabelSettings_qgril")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -18)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="start_area"]
+shape = SubResource("BoxShape3D_qgril")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="start_area"]
+mesh = SubResource("BoxMesh_27gfk")
+
+[node name="Sprite3D" type="Sprite3D" parent="start_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26587, 0)
+texture = SubResource("ViewportTexture_27gfk")
+
+[node name="SubViewport" type="SubViewport" parent="start_area"]
+transparent_bg = true
+size = Vector2i(263, 45)
+
+[node name="Label" type="Label" parent="start_area/SubViewport"]
+offset_right = 123.0
+offset_bottom = 23.0
+text = "START THE GAME"
+label_settings = SubResource("LabelSettings_qgril")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeaponSlotsChoice" parent="." instance=ExtResource("4_cfx51")]
+
+[connection signal="body_entered" from="quit_area" to="." method="_on_quit_area_body_entered"]
+[connection signal="body_entered" from="start_area" to="." method="_on_start_area_body_entered"]

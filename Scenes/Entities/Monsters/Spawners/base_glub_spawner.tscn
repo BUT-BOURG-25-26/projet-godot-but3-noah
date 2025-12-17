@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3btayj38g7lf"]
+
+[ext_resource type="Script" uid="uid://bfm7gt4chw6br" path="res://Scripts/Entities/Monsters/Spawners/base_glub_spawner.gd" id="1_hva4t"]
+[ext_resource type="PackedScene" uid="uid://de1urwb7sjgqf" path="res://Scenes/Entities/Monsters/MonstersScenes/base_glub.tscn" id="2_faux3"]
+
+[node name="BaseGlubSpawner" type="Node3D"]
+script = ExtResource("1_hva4t")
+base_glub_scene = ExtResource("2_faux3")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

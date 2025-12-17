@@ -1,0 +1,33 @@
+[gd_scene load_steps=10 format=3 uid="uid://chvnnfec7v6kg"]
+
+[ext_resource type="PackedScene" uid="uid://dgwfcvf88x6mh" path="res://Scenes/Weapons/WeaponsScenes/blaster_p.tscn" id="1_v0xve"]
+[ext_resource type="PackedScene" uid="uid://cwvek4gn3qcph" path="res://Scenes/Weapons/WeaponsScenes/blaster_c.tscn" id="2_r7u0i"]
+[ext_resource type="PackedScene" uid="uid://b3ta5awuixuu7" path="res://Scenes/Weapons/WeaponsScenes/blaster_d.tscn" id="3_li4vj"]
+[ext_resource type="PackedScene" uid="uid://bmjubygc4qeqm" path="res://Scenes/Weapons/WeaponsScenes/blaster_j.tscn" id="4_eq0ch"]
+[ext_resource type="PackedScene" uid="uid://btiiyq501xskc" path="res://Scenes/Weapons/WeaponsScenes/blaster_h.tscn" id="5_s4vna"]
+[ext_resource type="PackedScene" uid="uid://c0o2bndquwmgh" path="res://Scenes/Weapons/WeaponsScenes/blaster_l.tscn" id="6_rd6ul"]
+[ext_resource type="PackedScene" uid="uid://cgmbwdj4sos4b" path="res://Scenes/Weapons/WeaponsScenes/blaster_o.tscn" id="7_4lq7b"]
+[ext_resource type="PackedScene" uid="uid://cycew4vtbwf6v" path="res://Scenes/Weapons/WeaponsScenes/blaster_f.tscn" id="8_w7bam"]
+[ext_resource type="PackedScene" uid="uid://cjy0x061bgjph" path="res://Scenes/Weapons/WeaponsScenes/blaster_n.tscn" id="9_5cqib"]
+
+[node name="WeaponsScene" type="Node3D"]
+
+[node name="blaster-p" parent="." instance=ExtResource("1_v0xve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.800867, 0, 0)
+
+[node name="blaster-c" parent="." instance=ExtResource("2_r7u0i")]
+
+[node name="blaster-d" parent="." instance=ExtResource("3_li4vj")]
+
+[node name="blaster-j" parent="." instance=ExtResource("4_eq0ch")]
+
+[node name="blaster-h" parent="." instance=ExtResource("5_s4vna")]
+
+[node name="blaster-l" parent="." instance=ExtResource("6_rd6ul")]
+
+[node name="blaster-o" parent="." instance=ExtResource("7_4lq7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.554792, 0, 0)
+
+[node name="blaster-f" parent="." instance=ExtResource("8_w7bam")]
+
+[node name="blaster-n" parent="." instance=ExtResource("9_5cqib")]

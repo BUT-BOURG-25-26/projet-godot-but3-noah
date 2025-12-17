@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjt5stunsk46j"]
+
+[ext_resource type="Script" uid="uid://bbrikma84w3bf" path="res://Scripts/Entities/Monsters/Spawners/base_mushroom_spawner.gd" id="1_froey"]
+[ext_resource type="PackedScene" uid="uid://c34r7keeurvyx" path="res://Scenes/Entities/Monsters/MonstersScenes/base_mushroom.tscn" id="2_e2phx"]
+
+[node name="BaseMushroomSpawner" type="Node3D"]
+script = ExtResource("1_froey")
+base_mushroom_scene = ExtResource("2_e2phx")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
