@@ -19,20 +19,20 @@ script = ExtResource("1_jcy05")
 
 [node name="enemies_alived" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 213.0
-offset_bottom = 80.0
+offset_left = 48.0
+offset_top = 80.0
+offset_right = 245.0
+offset_bottom = 112.0
 text = "Enemies alived : 0"
 label_settings = SubResource("LabelSettings_ue6t0")
 vertical_alignment = 1
 
 [node name="enemies_killed" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 207.0
-offset_bottom = 48.0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 239.0
+offset_bottom = 80.0
 text = "Enemies killed : 0"
 label_settings = SubResource("LabelSettings_jcy05")
 vertical_alignment = 1
