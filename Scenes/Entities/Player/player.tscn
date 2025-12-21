@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csjeauhyjgtaw" path="res://Scripts/Entities/Player/player.gd" id="1_4ffj5"]
 [ext_resource type="PackedScene" uid="uid://ctftodukhqaal" path="res://Scenes/Entities/Player/Skins/adventurer.tscn" id="2_4ffj5"]
-[ext_resource type="PackedScene" uid="uid://37xio3w6t86t" path="res://Scenes/UI/Player/joystick.tscn" id="3_fcpig"]
+[ext_resource type="PackedScene" uid="uid://ddo47f38ulwyw" path="res://Scenes/UI/Player/joystick.tscn" id="3_fcpig"]
 [ext_resource type="PackedScene" uid="uid://c57ct08fnocr5" path="res://Scenes/UI/Player/healthbar.tscn" id="4_22fhq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ffj5"]

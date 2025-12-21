@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://n4a5a725gm4i"]
+[gd_scene load_steps=16 format=3 uid="uid://n4a5a725gm4i"]
 
 [ext_resource type="Script" uid="uid://buk6jf2jqsfds" path="res://Scripts/main_scene.gd" id="1_52fb6"]
 [ext_resource type="PackedScene" uid="uid://yhgdkf382kyd" path="res://Scenes/Entities/Player/player.tscn" id="2_6l7je"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcsoofaq512km" path="res://Scenes/UI/Game/ScoresUI/enemies_count.tscn" id="9_m1efj"]
 [ext_resource type="PackedScene" uid="uid://6xqqsn6kt2v3" path="res://Scenes/UI/Game/ScoresUI/score_ui.tscn" id="10_mai8y"]
 [ext_resource type="PackedScene" uid="uid://bvp8v3iwdlwad" path="res://Scenes/UI/Game/game_over.tscn" id="11_76v2p"]
+[ext_resource type="AudioStream" uid="uid://do0a3vp5ua11u" path="res://Sounds/stranger-things-124008.mp3" id="12_drdnd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv6wh"]
 
@@ -57,5 +58,10 @@ visible = false
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_drdnd")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
