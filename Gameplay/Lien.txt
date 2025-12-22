@@ -1,0 +1,5 @@
+Voici le lien de la vidéo pour mon jeu Godot.
+Etant donné l'impossibilité de mettre des fichiers trop volumineux
+sur GitHub, j'ai upload la vidéo en non répertorié sur YouTube.
+
+Voici le lien : https://youtu.be/ask8OOrz8OA
