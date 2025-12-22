@@ -28,11 +28,18 @@ func quit() -> void:
 
 func restart() -> void:
 	Engine.time_scale = 1.0
+	reset()
 	get_tree().change_scene_to_packed(start_scene)
 
 func game_over() -> void:
 	game_over_ui.init_time_played(time_played)
 	game_over_ui.visible = true
+
+func reset() -> void:
+	enemies_alived = 0
+	enemies_killed = 0
+	score = 0
+	time_played = 0
 
 func change_weapon(weapon_scene : PackedScene) -> void:
 	player.change_weapon(weapon_scene)
